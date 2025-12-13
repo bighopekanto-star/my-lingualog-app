@@ -1,57 +1,75 @@
 ---
-title: "A 'inconveniência' da aprendizagem de línguas é, na verdade, um atalho para a felicidade (aparentemente) - Crónica de um programador novato"
+title: "O dia em que desperdicei 3 horas com um erro de copiar e colar e até o meu apelo à IA foi rejeitado pela IA. [Diário de Desenvolvimento Vol.2]"
 date: "2025-12-09"
 image: "/images/vol2-thumbnail.png"
-description: "Porque sentimos uma sensação de realização quando superamos coisas difíceis? Vou explorar os 'benefícios inconvenientes' da linguagem."
+description: "Porque é que sentimos uma sensação de realização quando superamos coisas difíceis? Vou explorar os 'benefícios inconvenientes' da linguagem."
 ---
 
-Já há algum tempo. Esta é a segunda parte da crónica de desenvolvimento.
+Olá, sou o Animex, um completo novato em programação.
 
-Da última vez, declarei grandiosamente que "criaria uma aplicação que evita deliberadamente o uso da tradução por IA". Hoje, quero aprofundar um pouco mais o motivo pelo qual penso que a "inconveniência" e a "dificuldade" de não usar a tradução são, na verdade, uma coisa boa.
+Desta vez, vou recordar os **"dias de lama"** nas fases iniciais do desenvolvimento. Este é um registo cru de uma altura em que eu não sabia nada sobre ambientes integrados convenientes e estava apenas a copiar e colar sugestões de IA.
 
-No outro dia, estava a falar com o Gemini (a IA da Google) sobre isto, e deu-me uma perspetiva muito interessante.
+Nos bastidores: Não "seminário" ou "simples", mas consultando a Gemini
+Primeiro, o meu primeiro passo no desenvolvimento de aplicações. Foi contar o meu sonho à IA da Google, a "Gemini".
 
-O cérebro é uma "máquina de procurar recompensas"?
-Aparentemente, o cérebro humano tem um mecanismo chamado "sistema de recompensa". Quando assumimos uma tarefa desafiadora e a superamos, o nosso cérebro liberta uma substância chamada dopamina, que nos faz sentir prazer e uma sensação de realização.
+"Quero criar uma aplicação de chamadas inconveniente que evite a tradução por IA para aprender sobre diferentes culturas." Expliquei apaixonadamente este conceito através de entrada de voz, mas quando mais tarde verifiquei a transcrição, era uma tempestade de erros de transcrição como "simplesmente (Jimi) este tipo de aplicação" e "quero fazê-la num seminário (Zemi)".
 
-Esta é a chamada "recompensa". Sentimo-nos felizes quando os nossos esforços são recompensados.
+(※Nos bastidores: Mesmo enquanto escrevo este blog, tenho uma IA a verificar a minha escrita, mas talvez estas histórias de falhanços como "seminário" ou "simples" sejam o que eu chamo de "humanidade".)
 
-Por exemplo, pense em passar um jogo de vídeo muito difícil, ou em conseguir finalmente tocar uma música num instrumento depois de praticar durante muito tempo. Essa sensação de "Consegui!" é exatamente isto.
+De qualquer forma, enquanto esclarecia os mal-entendidos da IA, aprendi a configuração técnica da Gemini e obtive uma arma chamada **editor de IA "Cursor".**
 
-Pelo contrário, se tudo for demasiado fácil e puder ser feito sem esforço, é difícil obter esta sensação de realização.
+O desespero calmo de "não precisamos de pessoas"
+A experiência de usar o Cursor foi um pouco diferente da "impressão" (kandō) de que se fala frequentemente.
 
-A linguagem é o "desafio supremo" para o cérebro
-E parece que aprender uma língua é um "desafio" incrivelmente eficaz para ativar este sistema de recompensa.
+Eu pensava que "programação = decifrar um código", mas afinal era uma repetição de **"dar instruções em japonês → a IA sugere código → aprovar com a tecla Tab".**
 
-Quando tentamos comunicar numa língua a que não estamos habituados, o nosso cérebro funciona a toda a capacidade. "Qual é a palavra certa?" "Como devo estruturar esta frase?" Temos de pensar por tentativa e erro.
+"Será que eu, um novato completo que nem sequer sabe onde fica o terminal, não preciso de mexer em código tão avançado?" "Eu pergunto à Gemini e digo ao Cursor. O que estou a fazer é apenas ser um **'operador talentoso'**, não é?"
 
-E quando, depois de toda essa luta, as suas palavras finalmente chegam à outra pessoa, e você a vê acenar com a cabeça e dizer: "Estou a ver", a sensação de alegria é imensa.
+Pelo contrário, foi um sentimento próximo de uma espécie de **"desespero".** O trabalho criativo de escrever código é tão facilmente retirado das mãos humanas. Isto deve ser um sinal de que o papel da humanidade está a mudar, percebi calmamente.
 
-O Gemini disse-me que este processo é, de certa forma, como um "treino mental". Ao colocar uma carga elevada no nosso cérebro, podemos sentir uma grande sensação de realização.
+O "ops" da IU e 3 horas de perdição
+Mas esses pensamentos filosóficos foram rapidamente dissipados. Porque eu ainda era inexperiente mesmo como "operador".
 
-Inconveniência = um atalho para a dopamina
-Então, o que eu quero dizer é que a "inconveniência" de não usar a tradução por IA é, na verdade, um "atalho para fazer o nosso cérebro libertar dopamina".
+Ao digitar o código para criar a IU (ecrã) no Cursor, cometi um erro realmente básico ao copiá-lo e colá-lo no lugar errado.
 
-Ao criar deliberadamente uma situação em que "não se consegue comunicar facilmente", está a preparar o melhor palco possível para sentir uma sensação de realização.
+Naturalmente, o ecrã cuspiu um erro vermelho vivo e nada funcionou. "Estraguei tudo". Era só isso.
 
-A aplicação que estou a tentar criar foi concebida para fornecer este "palco". Um lugar onde se pode comunicar com pessoas de diferentes países, não através do filtro de uma máquina, mas com as suas próprias palavras cruas.
+Copiei e colei o registo de erros para a Gemini e perguntei: "Onde devo corrigir?" Corrigi como me foi dito e apareceu outro erro. A mesma coisa vezes sem conta. No final, desperdicei 3 preciosas horas com um único erro simples.
 
-Claro, haverá alturas em que não conseguirá transmitir a sua message e se sentirá frustrado. Mas é precisamente por causa dessa frustração que a alegria de se conectar será muito maior. Quero criar uma comunidade que possa partilhar esse sentimento.
+Foi o momento em que recebi o batismo de um principiante em programação: "Cometer um erro ao copiar e colar é mais assustador do que o conteúdo do código em si."
 
-A armadilha da "eficiência"
-Na nossa sociedade moderna, a "eficiência" é muitas vezes vista como uma virtude. Estamos sempre a tentar fazer as coisas mais depressa e com menos esforço.
+A morte da arma suprema "Cursor" e o jogo do inferno da IA
+Depois de terminar a IU, o passo seguinte foi implementar o coração da aplicação, a função de chamada **"SkyWay".** Fiquei complacente, pensando que configurar a chave de integração seria fácil, mas fiquei preso num pântano onde as chamadas não se conectavam de todo.
 
-Claro, isso é importante. Mas se perseguirmos apenas a eficiência, podemos estar a perder a "alegria de fazer um esforço".
+No meio da luta com a IA a ensinar-me código antigo e os meus próprios erros de copiar e colar... apareceu uma notificação impiedosa no ecrã: **"Excedeu o limite do nível gratuito."**
 
-Penso que também é importante ter o luxo de, por vezes, seguir deliberadamente o caminho mais longo. A "inconveniência" de aprender uma língua não é apenas uma dor; é um "benefício" que enriquece as nossas vidas. É nisso que acredito.
+Pensar que perderia o Cursor, a minha tábua de salvação, apenas alguns dias depois de começar o desenvolvimento.
 
-Estado atual: ainda a apalpar terreno com o básico
-Agora, quanto ao progresso real do desenvolvimento... para ser honesto, ainda estou na fase de apalpar o terreno com o básico do Next.js e do Firebase.
+Tentei desesperadamente usar um desconto de estudante, mas o meu endereço de e-mail da escola foi rejeitado pela autenticação de domínio, uma dupla tragédia. Como último recurso, pedi à IA para escrever um "e-mail de apelo" para o suporte, mas a resposta que recebi foi uma resposta estereotipada que parecia ter sido escrita por uma IA.
 
-Estou a criar a estrutura do projeto, a tentar descobrir como configurar a interface do utilizador... é uma série de tentativas e erros.
+Um e-mail criado por uma IA, rejeitado por uma IA. Eu estava apenas apanhado no meio deste fútil ciclo "IA vs IA".
 
-Sinto que ainda estou no sopé de uma montanha muito alta, mas acreditando que esta "dificuldade" acabará por levar a uma grande sensação de realização, vou continuar a avançar, um passo de cada vez.
+[Uma última pergunta] Para além da eficiência, a nossa "paixão" permanecerá?
+Tendo perdido o Cursor, enquanto estava perdido, lembrei-me daquele silêncio de 3 horas. Aquele tempo de impotência em que o SkyWay não se conectava e eu olhava para os registos de erros.
 
-Vou escrever mais sobre as dificuldades técnicas específicas na próxima publicação.
+A aplicação que estou a tentar criar é uma que escolhe deliberadamente ser "ineficiente". Ao subtrair a "conveniência" da comunicação, estou a tentar trazer de volta a "paixão".
 
-Por favor, aguardem ansiosamente.
+Então, e quanto a nós, os que fazemos a aplicação? Se a IA encurtar todo o trabalho árduo, de onde virá a "paixão" e a "dedicação" que colocamos no desenvolvimento?
+
+Aprovar código com a tecla Tab e atirar erros para a IA. **No final de tal "eficiência suprema", haverá realmente algum significado para nós, estudantes, criarmos aplicações?**
+
+Não vou parar esta luta para encontrar essa resposta.
+
+Da próxima vez: Para a "ferramenta misteriosa" proibida
+Eu, que perdi a arma suprema, o Cursor. No entanto, para continuar o desenvolvimento, recorri a **uma "ferramenta diferente".**
+
+Da próxima vez, como superei a implementação infernal do SkyWay usando essa ferramenta misteriosa. A luta desesperada de um completo novato está longe de terminar.
+
+(Continua)
+
+Lições desta vez
+A IA não é "simples", mas sim demasiado intensa.
+
+O local onde copia e cola é mais crítico do que o conteúdo do código.
+
+O maior inimigo da IA pode ser a própria IA.

@@ -1,57 +1,75 @@
 ---
-title: "The 'Inconvenience' of Language Learning is Actually a Shortcut to Happiness (Apparently) - A Novice Developer's Chronicle"
+title: "The day I wasted 3 hours on a copy-paste error and even my plea to AI was rejected by AI. [Dev Log Vol.2]"
 date: "2025-12-09"
 image: "/images/vol2-thumbnail.png"
-description: "Why do we feel a sense of fulfillment when we overcome difficult things? I'll explore the 'inconvenient benefits' of language."
+description: "Why do we feel a sense of accomplishment when we overcome difficult things? I'll explore the 'inconvenient benefits' of language."
 ---
 
-It's been a while. This is the second installment of the development chronicle.
+Hello, I'm Animex, a complete programming novice.
 
-Last time, I grandly declared that I would "create an app that deliberately avoids using AI translation." Today, I want to dig a little deeper into why I think the "inconvenience" and "difficulty" of not using translation is actually a good thing.
+This time, I'll look back on the **"days of mud"** in the early stages of development. This is a raw record from a time when I knew nothing about convenient integrated environments and was just copy-pasting AI suggestions.
 
-The other day, I was talking to Gemini (Google's AI) about this, and it gave me a really interesting perspective.
+Behind the Scenes: Not "seminar" or "plain," but consulting with Gemini
+First, my first step in app development. It was telling my dream to Google's AI, "Gemini."
 
-The Brain is a "Reward-Seeking Machine"?
-Apparently, the human brain has a mechanism called the "reward system." When we take on a challenging task and overcome it, our brains release a substance called dopamine, which makes us feel pleasure and a sense of accomplishment.
+"I want to create an inconvenient calling app that avoids AI translation to learn about different cultures." I passionately explained this concept via voice input, but when I later checked the transcript, it was a storm of mis-transcriptions like "plainly (Jimi) this kind of app" and "I want to make it in a seminar (Zemi)."
 
-This is the so-called "reward." We feel happy when our efforts are rewarded.
+(※Behind the scenes: Even as I write this blog, I have an AI check my writing, but maybe these failure stories like "seminar" or "plain" are what I call "human-likeness.")
 
-For example, think about clearing a really difficult video game, or finally being able to play a song on an instrument after practicing for a long time. That feeling of "I did it!" is exactly what this is.
+Anyway, while clearing up the AI's misunderstandings, I learned the technical configuration from Gemini and obtained a weapon called the **AI editor "Cursor."**
 
-Conversely, if everything is too easy and can be done with no effort, it's hard to get this sense of accomplishment.
+The calm despair of "we don't need people"
+The experience of using Cursor was a little different from the "感動" (impression) that is often talked about.
 
-Language is the "Ultimate Challenge" for the Brain
-And it seems that learning a language is an incredibly effective "challenge" for activating this reward system.
+I thought "programming = deciphering a code," but as it turned out, it was a repetition of **"give instructions in Japanese → AI suggests code → approve with the Tab key."**
 
-When we try to communicate in a language we're not used to, our brains work at full capacity. "What's the right word?" "How should I structure this sentence?" We have to think through trial and error.
+"Do I, a complete novice who doesn't even know where the terminal is, not need to mess with such advanced code?" "I ask Gemini and tell Cursor. What I'm doing is just being a **'talented operator,'** isn't it?"
 
-And when, after all that struggle, your words finally get through to the other person, and you see them nod and say, "I see," the feeling of joy is immense.
+Rather, it was a feeling close to a kind of **"despair."** The creative work of writing code is so easily taken away from human hands. This must be a sign that the role of humanity is changing, I calmly realized.
 
-Gemini told me that this process is, in a way, like a "mental workout." By putting a high load on our brains, we can feel a great sense of fulfillment.
+The "oops" of the UI and 3 hours of being lost
+But such philosophical thoughts were quickly blown away. Because I was still inexperienced even as an "operator."
 
-Inconvenience = A Shortcut to Dopamine
-So, what I want to say is that the "inconvenience" of not using AI translation is, in fact, a "shortcut to getting our brains to release dopamine."
+When typing the code to create the UI (screen) into Cursor, I made a really basic mistake of copy-pasting it into the wrong place.
 
-By deliberately creating a situation where you "can't easily communicate," you're setting up the best possible stage for feeling a sense of accomplishment.
+Naturally, the screen spat out a bright red error, and nothing worked. "I messed up." That's all there was to it.
 
-The app I'm trying to create is designed to provide this "stage." A place where you can communicate with people from different countries, not through the filter of a machine, but with your own raw words.
+I copy-pasted the error log to Gemini and asked, "Where should I fix it?" I fixed it as told, and another error appeared. The same thing over and over. In the end, I wasted a precious 3 hours on a single simple mistake.
 
-Of course, there will be times when you can't get your point across and feel frustrated. But it's precisely because of that frustration that the joy of connecting will be all the greater. I want to create a community that can share that feeling.
+It was the moment I received the baptism of a programming beginner: "Making a mistake in where you copy-paste is scarier than the content of the code itself."
 
-The Trap of "Efficiency"
-In our modern society, "efficiency" is often seen as a virtue. We're always trying to do things faster and with less effort.
+The death of the ultimate weapon "Cursor" and the AI hell game
+After finishing the UI, the next step was implementing the heart of the app, the calling function **"SkyWay."** I was complacent, thinking that setting the integration key would be easy, but I got stuck in a quagmire where the calls wouldn't connect at all.
 
-Of course, that's important. But if we pursue only efficiency, we might be losing out on the "joy of making an effort."
+In the midst of struggling with the AI teaching me old code and my own copy-paste mistakes... a heartless notification appeared on the screen: **"You have exceeded the free tier limit."**
 
-I think it's also important to have the luxury of deliberately taking the long way around sometimes. The "inconvenience" of language learning is not just a pain; it's a "benefit" that enriches our lives. That's what I believe.
+To think that I would lose Cursor, my lifeline, just a few days after starting development.
 
-Current Status: Still fumbling around with the basics
-Now, for the actual development progress... to be honest, I'm still at the stage of fumbling around with the very basics of Next.js and Firebase.
+I desperately tried to use a student discount, but my school email address was rejected by domain authentication, a double tragedy. As a last resort, I had the AI write a "plea email" for support, but the reply I got was a formulaic response that seemed like it was written by an AI.
 
-I'm creating the project structure, trying to figure out how to set up the UI... it's a series of trial and error.
+An email created by an AI, rejected by an AI. I was just caught in the middle of this futile "AI vs AI" loop.
 
-It feels like I'm still at the foot of a very high mountain, but believing that this "difficulty" will eventually lead to a great sense of accomplishment, I'm going to keep moving forward, one step at a time.
+[A final question] Beyond efficiency, will our "passion" remain?
+Having lost Cursor, as I was at a loss, I remembered that 3-hour silence. That helpless time when SkyWay wouldn't connect and I was staring at the error logs.
 
-I'll be writing more about the specific technical struggles in the next post.
+The app I'm trying to create is one that deliberately chooses to be "inefficient." By subtracting "convenience" from communication, I'm trying to bring back "passion."
 
-Please look forward to it.
+So, what about us, the ones making the app? If AI shortcuts all the hard work, where will the "passion" and "dedication" we pour into development come from?
+
+Approving code with the Tab key, and throwing errors to the AI. **At the end of such "ultimate efficiency," is there really any meaning left for us students to create apps?**
+
+I won't stop this fight to find that answer.
+
+Next time: To the forbidden "mystery tool"
+I, who have lost the ultimate weapon, Cursor. However, to continue development, I turned to **a "different tool."**
+
+Next time, how I broke through the hellish SkyWay implementation using that mystery tool. A complete novice's desperate struggle is far from over.
+
+(To be continued)
+
+Lessons from this time
+AI is not "plain," but rather too intense.
+
+Where you copy-paste is more critical than the content of the code.
+
+AI's greatest enemy might be AI itself.
