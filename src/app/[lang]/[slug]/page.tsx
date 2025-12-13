@@ -82,7 +82,7 @@ export default async function PostPage({ params }: { params: { lang: string, slu
                     alt={post.title}
                     width={1200}
                     height={630}
-                    className="object-cover"
+                    className="object-cover w-full"
                     priority
                 />
             </div>
