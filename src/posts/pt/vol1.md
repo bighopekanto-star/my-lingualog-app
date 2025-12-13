@@ -1,7 +1,7 @@
 ---
 title: "Se a 'barreira da língua' desaparecesse, seríamos felizes? - Crónica de desenvolvimento de um amador a lutar contra a singularidade"
 date: "2025-12-08"
-image: "/images/vol1.jpg"
+image: "/images/vol1-thumbnail.png"
 description: "Estou a criar uma aplicação que persegue os benefícios do inconveniente, dispensando deliberadamente a tradução por IA."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "When a student asked, 'Won't life be boring if AI becomes widespread?', I thought the time spent agonizing over it might become a 'luxury'."
 date: "2025-12-10"
-image: "/images/vol3.jpg"
+image: "/images/vol3-thumbnail.png"
 description: "What if AI overcame all of humanity's weaknesses? Considering the 'light and shadow' of the Singularity."
 ---
 

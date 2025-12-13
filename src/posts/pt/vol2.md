@@ -1,7 +1,7 @@
 ---
 title: "O dia em que desperdicei 3 horas com um erro de copiar e colar e até o meu apelo à IA foi rejeitado pela IA. [Diário de Desenvolvimento Vol.2]"
 date: "2025-12-09"
-image: "/images/vol2.jpg"
+image: "/images/vol2-thumbnail.png"
 description: "Porque é que sentimos uma sensação de realização quando superamos coisas difíceis? Vou explorar os 'benefícios inconvenientes' da linguagem."
 ---
 

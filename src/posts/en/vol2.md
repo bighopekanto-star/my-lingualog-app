@@ -1,7 +1,7 @@
 ---
 title: "The day I wasted 3 hours on a copy-paste error and even my plea to AI was rejected by AI. [Dev Log Vol.2]"
 date: "2025-12-09"
-image: "/images/vol2.jpg"
+image: "/images/vol2-thumbnail.png"
 description: "Why do we feel a sense of accomplishment when we overcome difficult things? I'll explore the 'inconvenient benefits' of language."
 ---
 

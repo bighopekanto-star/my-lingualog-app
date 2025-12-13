@@ -1,7 +1,7 @@
 ---
 title: "Si la 'barrière de la langue' disparaissait, serions-nous heureux ? - Journal de développement d'un amateur complet combattant la singularité"
 date: "2025-12-08"
-image: "/images/vol1.jpg"
+image: "/images/vol1-thumbnail.png"
 description: "Je crée une application qui recherche les avantages de l'inconvénient en n'utilisant délibérément pas la traduction par IA."
 ---
 

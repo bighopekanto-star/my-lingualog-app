@@ -1,7 +1,7 @@
 ---
 title: "복사 붙여넣기 실수로 3시간을 낭비하고, AI에게 보낸 탄원 메일마저 AI에게 거부당한 날. [개발 일지 Vol.2]"
 date: "2025-12-09"
-image: "/images/vol2.jpg"
+image: "/images/vol2-thumbnail.png"
 description: "왜 우리는 어려운 일을 극복했을 때 성취감을 느낄까요? 언어의 '불편한 이점'에 대해 생각해 봅니다."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "학생에게 'AI가 보급되면 인생 재미없어지지 않아요?'라는 질문을 받고, 고민하는 시간이야말로 '사치'가 될지도 모른다고 생각한 이야기."
 date: "2025-12-10"
-image: "/images/vol3.jpg"
+image: "/images/vol3-thumbnail.png"
 description: "만약 AI가 인류의 약점을 모두 극복한다면? 특이점의 '빛과 그림자'를 생각하다."
 ---
 

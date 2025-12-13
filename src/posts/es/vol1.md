@@ -1,7 +1,7 @@
 ---
 title: "Si la 'barrera del idioma' desapareciera, ¿seríamos felices? - Crónica de desarrollo de un aficionado que lucha contra la singularidad"
 date: "2025-12-08"
-image: "/images/vol1.jpg"
+image: "/images/vol1-thumbnail.png"
 description: "Estoy creando una aplicación que busca los beneficios de la incomodidad, prescindiendo deliberadamente de la traducción automática."
 ---
 
