@@ -1,13 +1,13 @@
 ---
 title: "Cuando un alumno me preguntó: '¿No será la vida aburrida si la IA se generaliza?', pensé que el tiempo dedicado a reflexionar sobre ello podría convertirse en un 'lujo'."
 date: "2025-12-10"
-image: "https://picsum.photos/seed/vol3/1200/630"
+image: "/images/vol3.jpg"
 description: "¿Y si la IA superara todas las debilidades de la humanidad? Considerando la 'luz y la sombra' de la Singularidad."
 ---
 
 Antes de entrar en el tema principal, tengo una consulta (o más bien, una seria preocupación) que me gustaría compartir con vosotros, los lectores.
 
-Estoy escribiendo este blog mientras consulto con una IA (Gemini), pero ¿no os parece que cuando una IA pule vuestros textos, de repente se vuelven demasiado **"arrogantes"**?
+Estoy escribiendo este blog mientras consulto con una IA (Gemini), but ¿no os parece que cuando una IA pule vuestros textos, de repente se vuelven demasiado **"arrogantes"**?
 
 Yo estoy hablando con un tono de "creo que sí..." mediante entrada de voz, pero el texto que la IA genera suena como un presentador muy hábil, diciendo cosas como "¡Es...!" o "¡Debe ser...!". Cuando lo releo, a menudo siento que, "Oye, ese no es mi personaje... me siento un poco raro" (risas).
 

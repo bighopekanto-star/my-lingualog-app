@@ -1,7 +1,7 @@
 ---
 title: "'언어의 장벽'이 사라지면 우리는 행복해질까? - 특이점과 싸우는 완전 초보의 개발기"
 date: "2025-12-08"
-image: "https://picsum.photos/seed/vol1/1200/630"
+image: "/images/vol1.jpg"
 description: "굳이 AI 번역을 사용하지 않고 불편함의 이점을 추구하는 앱을 만듭니다."
 ---
 

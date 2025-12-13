@@ -1,7 +1,7 @@
 ---
 title: "If the 'language barrier' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity"
 date: "2025-12-08"
-image: "https://picsum.photos/seed/vol1/1200/630"
+image: "/images/vol1.jpg"
 description: "I'm making an app that pursues inconvenient benefits by deliberately not using AI translation."
 ---
 

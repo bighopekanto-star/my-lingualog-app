@@ -1,7 +1,7 @@
 ---
 title: "Quando um aluno perguntou: 'A vida não vai ficar chata se a IA se generalizar?', pensei que o tempo gasto a agonizar com isso poderia tornar-se um 'luxo'."
 date: "2025-12-10"
-image: "https://picsum.photos/seed/vol3/1200/630"
+image: "/images/vol3.jpg"
 description: "E se a IA superasse todas as fraquezas da humanidade? Considerando a 'luz e sombra' da Singularidade."
 ---
 
@@ -17,7 +17,7 @@ Mesmo que eu peça para "suavizar", continua a parecer estranho. Se algum blogge
 
 Quando olham à vossa volta no comboio, vêem toda a gente a olhar para os seus smartphones, certo? Claro, eu sou um deles, a verificar as notificações sempre que tenho um momento livre, ou a percorrer a minha timeline.
 
-E em momentos como esse, penso vagamente. "Se a IA e a tecnologia evoluírem ainda mais, o que acontecerá ao nosso futuro?"
+And em momentos como esse, penso vagamente. "Se a IA e a tecnologia evoluírem ainda mais, o que acontecerá ao nosso futuro?"
 
 Desta vez, não é sobre desenvolvimento, mas vou tentar escrever de forma divagante sobre as "coisas do futuro" em que costumo pensar. Sinto que há muitas pessoas que têm ansiedades semelhantes.
 

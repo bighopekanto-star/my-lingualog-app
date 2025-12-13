@@ -1,7 +1,7 @@
 ---
 title: "Lorsqu'un élève m'a demandé : 'La vie ne sera-t-elle pas ennuyeuse si l'IA se généralise ?', j'ai pensé que le temps passé à angoisser à ce sujet pourrait devenir un 'luxe'."
 date: "2025-12-10"
-image: "https://picsum.photos/seed/vol3/1200/630"
+image: "/images/vol3.jpg"
 description: "Et si l'IA surmontait toutes les faiblesses de l'humanité ? Réflexion sur la 'lumière et l'ombre' de la Singularité."
 ---
 

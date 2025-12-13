@@ -1,7 +1,7 @@
 ---
 title: "Si la 'barrera del idioma' desapareciera, ¿seríamos felices? - Crónica de desarrollo de un aficionado que lucha contra la singularidad"
 date: "2025-12-08"
-image: "https://picsum.photos/seed/vol1/1200/630"
+image: "/images/vol1.jpg"
 description: "Estoy creando una aplicación que busca los beneficios de la incomodidad, prescindiendo deliberadamente de la traducción automática."
 ---
 
@@ -18,7 +18,7 @@ Sinceramente, cuando lo imaginé, más que emoción, sentí una vaga sensación 
 
 Pero, si todo se vuelve demasiado cómodo y la barrera de la comunicación desaparece por completo, ¿qué significa eso para nosotros como seres humanos? Empecé a preguntármelo. ¿No se convertiría el mundo en un lugar demasiado racional, demasiado perfecto y demasiado soso?
 
-(Esta parte está escrita a mano, pero cuando estuve hablando con Gemini el jueves y el viernes pasados sobre el futuro post-singularidad, sentí una verdadera opresión en el pecho. Lo que más me impactó fue la idea de que se pudiera crear tecnología que superara nuestras limitations biológicas. Podríamos ser capaces de entender la mayoría de las cosas en cuestión de segundos, y las imposibilidades físicas podrían desaparecer. ¿Qué objetivos buscaría una humanidad tan cercana a la perfección para encontrar la felicidad? Para alguien como yo, que no puede ser optimista ante ansiedades tan vagas, estuve lleno de un miedo y una angustia deprimentes durante un tiempo. Ahora he cambiado de perspectiva y ya no tengo tanto esas ansiedades... pero escribiré sobre ello en otro artículo.)
+(Esta parte está escrita a mano, pero cuando estuve hablando con Gemini el jueves y el viernes pasados sobre el futuro post-singularidad, sentí una verdadera opresión en el pecho. Lo que más me impactó fue la idea de que se pudiera crear tecnología que superara nuestras limitations biológicas. Podríamos ser capaces de entender la mayoría de las cosas en cuestión de segundos, y las imposibilidades físicas podrían desaparecer. ¿Qué objetivos buscaría una humanidad tan cercana a la perfection para encontrar la felicidad? Para alguien como yo, que no puede ser optimista ante ansiedades tan vagas, estuve lleno de un miedo y una angustia deprimentes durante un tiempo. Ahora he cambiado de perspectiva y ya no tengo tanto esas ansiedades... pero escribiré sobre ello en otro artículo.)
 
 Lo que desaparece en el momento en que dices "Sister"
 La razón por la que empecé a pensar en esto es que el lenguaje me parece personalmente interesante. El lenguaje no es solo un intercambio de palabras; es un elemento crucial en la raíz misma de nuestros pensamientos.

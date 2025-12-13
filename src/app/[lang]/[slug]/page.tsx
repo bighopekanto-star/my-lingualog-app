@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
   
+  const imageUrl = post.image.startsWith('http') ? post.image : `${process.env.VERCEL_URL ? 'https' : 'http'}://${process.env.VERCEL_URL || 'localhost:3000'}${post.image}`;
+
   return {
     title: `${post.title} - ${lang.name}`,
     description: post.description,
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       images: [
         {
-          url: post.image,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -78,7 +80,8 @@ export default async function PostPage({ params }: { params: { lang: string, slu
                 <Image
                     src={post.image}
                     alt={post.title}
-                    fill
+                    width={1200}
+                    height={630}
                     className="object-cover"
                     priority
                 />
