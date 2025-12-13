@@ -1,7 +1,7 @@
 ---
 title: "コピペミスで3時間溶かし、AIへの嘆願メールすらAIに拒否された日。【開発日誌Vol.2】"
 date: "2025-12-09"
-image: "/images/vol2.jpg"
+image: "/images/vol2-thumbnail.png"
 description: "なぜ僕らは、難しいことを乗り越えたときに達成感を感じるのか？ 言語の「不便益」について考えてみます。"
 ---
 

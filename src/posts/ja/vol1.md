@@ -1,7 +1,7 @@
 ---
 title: "「言葉の壁」が消えたら、僕らは幸せになれるのか？ーシンギュラリティと戦うド素人の開発記"
 date: "2025-12-08"
-image: "/images/vol1.jpg"
+image: "/images/vol1-thumbnail.png"
 description: "あえてAI翻訳を使わない、不便益を追求するアプリを作ります。"
 ---
 
