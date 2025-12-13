@@ -33,7 +33,7 @@ export async function getPostData(lang: string, slug: string) {
 
   return {
     slug,
-    ...data as { title: string; date: string },
+    ...data as { title: string; date: string; image: string; description: string },
     content: htmlContent,
   };
 }

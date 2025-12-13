@@ -1,7 +1,7 @@
 ---
 title: "「AIが普及したら人生つまんなくね？」と生徒に聞かれて、悩み抜く時間こそが『贅沢』になるかも、と思った話。"
 date: "2025-12-10"
-image: "/images/vol3-thumbnail.png"
+image: "https://picsum.photos/seed/vol3/1200/630"
 description: "もしAIが人類の弱点をすべて克服したら？ シンギュラリティの「光と影」を考える。"
 ---
 

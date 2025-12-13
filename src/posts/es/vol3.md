@@ -1,7 +1,7 @@
 ---
 title: "Cuando un alumno me preguntó: '¿No será la vida aburrida si la IA se generaliza?', pensé que el tiempo dedicado a reflexionar sobre ello podría convertirse en un 'lujo'."
 date: "2025-12-10"
-image: "/images/vol3-thumbnail.png"
+image: "https://picsum.photos/seed/vol3/1200/630"
 description: "¿Y si la IA superara todas las debilidades de la humanidad? Considerando la 'luz y la sombra' de la Singularidad."
 ---
 

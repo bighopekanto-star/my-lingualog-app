@@ -1,7 +1,7 @@
 ---
 title: "Quando um aluno perguntou: 'A vida não vai ficar chata se a IA se generalizar?', pensei que o tempo gasto a agonizar com isso poderia tornar-se um 'luxo'."
 date: "2025-12-10"
-image: "/images/vol3-thumbnail.png"
+image: "https://picsum.photos/seed/vol3/1200/630"
 description: "E se a IA superasse todas as fraquezas da humanidade? Considerando a 'luz e sombra' da Singularidade."
 ---
 

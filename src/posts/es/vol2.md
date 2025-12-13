@@ -1,7 +1,7 @@
 ---
 title: "El día que perdí 3 horas por un error de copiar y pegar y hasta mi súplica a la IA fue rechazada por otra IA. [Diario de Desarrollo Vol.2]"
 date: "2025-12-09"
-image: "/images/vol2-thumbnail.png"
+image: "https://picsum.photos/seed/vol2/1200/630"
 description: "¿Por qué sentimos una sensación de logro cuando superamos cosas difíciles? Exploraré los 'beneficios inconvenientes' del lenguaje."
 ---
 

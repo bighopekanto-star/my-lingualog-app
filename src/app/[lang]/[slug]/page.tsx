@@ -12,6 +12,7 @@ import {
 import { getPostData, getPostSlugs } from '@/lib/posts';
 import { format } from 'date-fns';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 type Props = {
   params: { lang: string, slug: string }
@@ -37,7 +38,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   return {
     title: `${post.title} - ${lang.name}`,
-    description: `Read the post "${post.title}" in ${lang.name}.`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
   }
 }
 
@@ -60,6 +73,17 @@ export default async function PostPage({ params }: { params: { lang: string, slu
           </Link>
         </Button>
         <Card className="overflow-hidden">
+          {post.image && (
+             <div className="relative w-full aspect-video">
+                <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </div>
+          )}
           <CardHeader>
             <CardTitle className="text-3xl md:text-4xl font-headline text-primary">
               {post.title}

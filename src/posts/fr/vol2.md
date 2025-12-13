@@ -1,7 +1,7 @@
 ---
 title: "Le jour où j'ai perdu 3 heures à cause d'une erreur de copier-coller et où même ma supplique à l'IA a été rejetée par une autre IA. [Journal de développement Vol.2]"
 date: "2025-12-09"
-image: "/images/vol2-thumbnail.png"
+image: "https://picsum.photos/seed/vol2/1200/630"
 description: "Pourquoi ressentons-nous un sentiment d'accomplissement lorsque nous surmontons des choses difficiles ? Je vais explorer les 'avantages incommodes' du langage."
 ---
 
