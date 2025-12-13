@@ -53,7 +53,7 @@ export function getAllPosts(lang: string) {
 
         return {
             slug,
-            ...data as { title: string; date: string },
+            ...data as { title: string; date: string; image: string; description: string },
         };
     });
 
