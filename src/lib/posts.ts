@@ -23,19 +23,36 @@ export function getPostSlugs() {
 export async function getPostData(lang: string, slug: string) {
   const fullPath = path.join(postsDirectory, lang, `${slug}.md`);
   
-  if (!fs.existsSync(fullPath)) {
-    return null;
-  }
-  
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-  const htmlContent = await marked(content);
+  if (fs.existsSync(fullPath)) {
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    const htmlContent = await marked(content);
 
-  return {
-    slug,
-    ...data as { title: string; date: string; image: string; description: string },
-    content: htmlContent,
-  };
+    return {
+      slug,
+      ...data as { title: string; date: string; image: string; description: string },
+      content: htmlContent,
+    };
+  }
+
+  // Fallback to find the post in any language if not in the specified one
+  for (const l of languages) {
+    const fallbackPath = path.join(postsDirectory, l.code, `${slug}.md`);
+    if (fs.existsSync(fallbackPath)) {
+      const fileContents = fs.readFileSync(fallbackPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      // We don't need to render content for metadata, so we can skip it.
+      const htmlContent = lang ? await marked(content) : '';
+      console.warn(`Post for slug '${slug}' not found in '${lang}', falling back to '${l.code}'`);
+      return {
+        slug,
+        ...data as { title: string; date: string; image: string; description: string },
+        content: htmlContent,
+      };
+    }
+  }
+
+  return null;
 }
 
 export function getAllPosts(lang: string) {
