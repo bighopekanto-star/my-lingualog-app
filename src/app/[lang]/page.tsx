@@ -1,35 +1,23 @@
-'use client'
-
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   Card,
   CardContent,
 } from '@/components/ui/card';
-import { getLanguageInfo } from '@/lib/languages';
+import { getLanguageInfo, allLanguages, LanguageCode } from '@/lib/languages';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { useLanguage } from '@/context/language-context';
-import React, { useMemo } from 'react';
 import { getAllPosts, type Post } from '@/lib/posts';
-
-// This component now fetches posts on the client side for simplicity
-// and to avoid issues with 'fs' module on the browser.
-function AllPosts() {
-    const posts: Post[] = useMemo(() => getAllPosts(), []);
-    return posts;
-}
+import React from 'react';
 
 export default function LanguageHomePage({ params }: { params: { lang: string } }) {
-  const resolvedParams = React.use(params);
-  const langInfo = getLanguageInfo(resolvedParams.lang);
-  const { language } = useLanguage();
+  const langInfo = getLanguageInfo(params.lang);
 
   if (!langInfo) {
     notFound();
   }
 
-  const posts = AllPosts();
+  const posts = getAllPosts();
   
   const content = {
     en: {
@@ -69,8 +57,8 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
     }
   };
   
-  const pageContent = content[resolvedParams.lang as keyof typeof content] || content.en;
-
+  const pageContent = content[params.lang as keyof typeof content] || content.en;
+  const currentLang = params.lang as LanguageCode;
 
   return (
     <div className="bg-white dark:bg-gray-900 py-16 sm:py-24">
@@ -86,7 +74,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
 
         <div className="space-y-12">
             {posts.map((post) => (
-              <Link href={`/${language}/${post.slug}`} key={post.slug} className="group block">
+              <Link href={`/${params.lang}/${post.slug}`} key={post.slug} className="group block">
                 <Card className="w-full transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 overflow-hidden border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
                   <div className="md:flex">
                      <div className="md:w-2/5 xl:w-1/3">
@@ -94,7 +82,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
                           <div className="relative w-full aspect-[1.91/1] overflow-hidden">
                             <Image
                               src={post.image}
-                              alt={post.content[language]?.title || post.content['en'].title}
+                              alt={post.content[currentLang]?.title || post.content['en'].title}
                               fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
@@ -102,7 +90,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
                         )}
                       </div>
                       <div className="md:w-3/5 xl:w-2/3 flex flex-col justify-center p-6 lg:p-8">
-                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[language]?.title || post.content['en'].title}</h3>
+                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[currentLang]?.title || post.content['en'].title}</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                           {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
                         </p>

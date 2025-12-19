@@ -5,29 +5,19 @@ import { useLanguage } from '@/context/language-context';
 import Link from 'next/link';
 import {
   Card,
-  CardContent,
 } from '@/components/ui/card';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { OrganicWave } from '@/components/layout/organic-wave';
 import { motion } from 'framer-motion';
-import { useMemo } from 'react';
-import { getAllPosts, type Post } from '@/lib/posts';
-
-// This component now fetches posts on the client side for simplicity
-// and to avoid issues with 'fs' module on the browser.
-// A more optimized approach would use server-side fetching with an API route or getStaticProps.
-function AllPosts() {
-    // This is not ideal for performance, but it's a temporary workaround.
-    // In a real app, this data should be fetched from a server/API.
-    const posts: Post[] = useMemo(() => getAllPosts(), []);
-    return posts;
-}
-
+import type { Post } from '@/lib/posts';
+import React from 'react';
 
 export default function Home() {
   const { language } = useLanguage();
-  
+  // TODO: This should be fetched from the client side.
+  const posts: Post[] = [];
+
   const content = {
     en: {
       mainHeadline: "Trust the Vibe, not the Logic.",
@@ -81,8 +71,7 @@ export default function Home() {
   };
 
   const pageContent = content[language];
-  const posts = AllPosts();
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -131,7 +120,7 @@ export default function Home() {
                           <div className="relative w-full aspect-[1.91/1] overflow-hidden">
                             <Image
                               src={post.image}
-                              alt={post.content[language]?.title || post.content['en'].title}
+                              alt={post.content[language as keyof typeof post.content]?.title || post.content['en'].title}
                               fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
@@ -139,7 +128,7 @@ export default function Home() {
                         )}
                       </div>
                       <div className="md:w-3/5 xl:w-2/3 flex flex-col justify-center p-6 lg:p-8">
-                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[language]?.title || post.content['en'].title}</h3>
+                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[language as keyof typeof post.content]?.title || post.content['en'].title}</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                           {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
                         </p>
