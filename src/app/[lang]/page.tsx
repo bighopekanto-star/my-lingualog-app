@@ -10,6 +10,7 @@ import { getLanguageInfo } from '@/lib/languages';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { useLanguage } from '@/context/language-context';
+import React from 'react';
 
 const mockPosts = [
     { slug: 'vol1', title: 'If the \'language barrier\' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
@@ -19,7 +20,8 @@ const mockPosts = [
 ]
 
 export default function LanguageHomePage({ params }: { params: { lang: string } }) {
-  const langInfo = getLanguageInfo(params.lang);
+  const resolvedParams = React.use(params);
+  const langInfo = getLanguageInfo(resolvedParams.lang);
   const { language } = useLanguage();
 
   if (!langInfo) {
@@ -66,7 +68,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
     }
   };
   
-  const pageContent = content[params.lang as keyof typeof content] || content.en;
+  const pageContent = content[resolvedParams.lang as keyof typeof content] || content.en;
 
 
   return (
