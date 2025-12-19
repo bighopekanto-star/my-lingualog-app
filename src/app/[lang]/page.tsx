@@ -7,30 +7,52 @@ import {
   CardTitle,
   CardDescription
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { getLanguage } from '@/lib/languages';
-import { ArrowRight } from 'lucide-react';
+import { getLanguageInfo, allLanguages } from '@/lib/languages';
 import { getAllPosts } from '@/lib/posts';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
+
+export async function generateStaticParams() {
+  return allLanguages.map((lang) => ({
+    lang: lang.code,
+  }));
+}
+
 
 export default function LanguageHomePage({ params }: { params: { lang: string } }) {
-  const lang = getLanguage(params.lang);
+  const lang = getLanguageInfo(params.lang);
 
   if (!lang) {
     notFound();
   }
 
   const posts = getAllPosts(lang.code);
+  
+  const content = {
+    en: {
+      title: "All Stories",
+      description: "A collection of all articles and development logs.",
+      postedOn: "Posted on",
+    },
+    ja: {
+      title: "すべての記事",
+      description: "開発日誌を含む、すべての記事一覧です。",
+      postedOn: "投稿日",
+    },
+  };
+  
+  const pageContent = content[params.lang as keyof typeof content] || content.en;
+
 
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">
-          {lang.name} Posts
+        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-foreground">
+          {pageContent.title}
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          A collection of posts and articles in {lang.name}.
+          {pageContent.description}
         </p>
       </div>
 
@@ -52,7 +74,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
                 <CardHeader className="p-0">
                   <CardTitle className="mb-2">{post.title}</CardTitle>
                   <CardDescription>
-                    Posted on {format(new Date(post.date), 'MMMM d, yyyy')}
+                    {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-0 mt-auto pt-4">

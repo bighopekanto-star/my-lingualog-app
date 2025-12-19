@@ -2,13 +2,22 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { languages } from './languages';
+import { allLanguages } from './languages';
 
 const postsDirectory = path.join(process.cwd(), 'src', 'posts');
 
+export type Post = {
+  slug: string;
+  title: string;
+  date: string;
+  image: string;
+  description: string;
+  content: string;
+};
+
 export function getPostSlugs() {
   const allSlugs = new Set<string>();
-  for (const lang of languages) {
+  for (const lang of allLanguages) {
     const langDir = path.join(postsDirectory, lang.code);
     if (fs.existsSync(langDir)) {
       const fileNames = fs.readdirSync(langDir);
@@ -20,7 +29,7 @@ export function getPostSlugs() {
   return Array.from(allSlugs);
 }
 
-export async function getPostData(lang: string, slug: string) {
+export async function getPostData(lang: string, slug: string): Promise<Post | null> {
   const fullPath = path.join(postsDirectory, lang, `${slug}.md`);
   
   if (fs.existsSync(fullPath)) {
@@ -30,23 +39,22 @@ export async function getPostData(lang: string, slug: string) {
 
     return {
       slug,
-      ...data as { title: string; date: string; image: string; description: string },
+      ...(data as { title: string; date: string; image: string; description: string }),
       content: htmlContent,
     };
   }
 
-  // Fallback to find the post in any language if not in the specified one
-  for (const l of languages) {
+  // Fallback for metadata generation if post doesn't exist in the current language
+  for (const l of allLanguages) {
     const fallbackPath = path.join(postsDirectory, l.code, `${slug}.md`);
     if (fs.existsSync(fallbackPath)) {
       const fileContents = fs.readFileSync(fallbackPath, 'utf8');
       const { data, content } = matter(fileContents);
-      // We don't need to render content for metadata, so we can skip it.
-      const htmlContent = lang ? await marked(content) : '';
+      const htmlContent = await marked(content);
       console.warn(`Post for slug '${slug}' not found in '${lang}', falling back to '${l.code}'`);
       return {
         slug,
-        ...data as { title: string; date: string; image: string; description: string },
+        ...(data as { title: string; date: string; image: string; description: string }),
         content: htmlContent,
       };
     }
@@ -70,7 +78,7 @@ export function getAllPosts(lang: string) {
 
         return {
             slug,
-            ...data as { title: string; date: string; image: string; description: string },
+            ...(data as { title: string; date: string; image: string; description: string }),
         };
     });
 

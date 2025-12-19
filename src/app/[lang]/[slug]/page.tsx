@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getLanguage, languages } from '@/lib/languages';
+import { allLanguages, getLanguageInfo } from '@/lib/languages';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import {
@@ -20,7 +20,7 @@ type Props = {
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs();
-  const params = languages.flatMap(lang => 
+  const params = allLanguages.flatMap(lang => 
     slugs.map(slug => ({ lang: lang.code, slug }))
   );
   return params;
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostData(params.lang, params.slug);
-  const lang = getLanguage(params.lang);
+  const lang = getLanguageInfo(params.lang);
 
   if (!post || !lang) {
     return {
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const imageUrl = post.image.startsWith('http') ? post.image : `${process.env.VERCEL_URL ? 'https' : 'http'}://${process.env.VERCEL_URL || 'localhost:3000'}${post.image}`;
 
   return {
-    title: `${post.title} - ${lang.name}`,
+    title: `${post.title} - Co-Vibe`,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 export default async function PostPage({ params }: { params: { lang: string, slug: string } }) {
-  const lang = getLanguage(params.lang);
+  const lang = getLanguageInfo(params.lang);
   const post = await getPostData(params.lang, params.slug);
 
   if (!lang || !post) {
@@ -71,7 +71,7 @@ export default async function PostPage({ params }: { params: { lang: string, slu
         <Button variant="ghost" asChild className="mb-8">
           <Link href={`/${lang.code}`}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to {lang.name} posts
+            Back to All Stories
           </Link>
         </Button>
         <Card className="overflow-hidden">
@@ -88,7 +88,7 @@ export default async function PostPage({ params }: { params: { lang: string, slu
             </div>
           )}
           <CardHeader>
-            <CardTitle className="text-3xl md:text-4xl font-headline text-primary">
+            <CardTitle className="text-3xl md:text-4xl font-headline text-foreground">
               {post.title}
             </CardTitle>
             <p className="text-sm text-muted-foreground pt-2">
