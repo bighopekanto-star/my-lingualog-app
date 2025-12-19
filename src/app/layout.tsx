@@ -4,10 +4,11 @@ import Header from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { LanguageProvider } from '@/context/language-context';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: 'Co-Vibe',
-  description: 'The Despair of "Couldn\'t AI Just Do This?"',
+  description: "Trust the Vibe, not the Logic.",
 };
 
 export default function RootLayout({
@@ -16,11 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <LanguageProvider>
@@ -28,6 +29,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Toaster />
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );

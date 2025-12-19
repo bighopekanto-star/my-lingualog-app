@@ -1,99 +1,150 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/language-context';
 import Link from 'next/link';
+import {
+  Card,
+  CardContent,
+} from '@/components/ui/card';
+import { format } from 'date-fns';
+import Image from 'next/image';
+import { OrganicWave } from '@/components/layout/organic-wave';
+import { motion } from 'framer-motion';
 
-// This is now a placeholder. In the future, this will be fetched from Firestore.
-const manifestoContent = {
-    en: {
-        title: "If the 'language barrier' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity",
-        content: `Well, hello. It's nice to meet you. This is actually the very first post on this blog...`
-    },
-    ja: {
-        title: "「言葉の壁」が消えたら、僕らは幸せになれるのか？ーシンギュラリティと戦うド素人の開発記",
-        content: `どうも。はじめまして。 これ、実は記念すべきブログの初回なんですが...`
-    },
-    // Add other languages here
-    es: { title: "", content: "" },
-    fr: { title: "", content: "" },
-    pt: { title: "", content: "" },
-    ko: { title: "", content: "" },
-    de: { title: "", content: "" },
-}
+const mockPosts = [
+    { slug: 'vol1', title: 'Blog Post 1', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
+    { slug: 'vol2', title: 'Blog Post 2', date: '2025-12-09', image: '/images/vol2-thumbnail.png' },
+    { slug: 'vol3', title: 'Blog Post 3', date: '2025-12-10', image: '/images/vol3-thumbnail.png' },
+    { slug: 'vol4', title: 'Blog Post 4', date: '2025-12-18', image: '/images/vol4-thumbnail.png' },
+];
 
 export default function Home() {
   const { language } = useLanguage();
-  const [isLoading, setIsLoading] = useState(false);
-
+  
   const content = {
     en: {
-      heroTitle: "The Despair of 'Couldn't AI Just Do This?'",
-      leadText: "In an age of structural necessity, humans are becoming the bottleneck. What value remains for us? This is why I built an intentionally inconvenient app.",
-      ctaButton: "Enter Co-Vibe / Connect",
-      moreStories: "More Stories",
-      manifesto: manifestoContent.en
+      mainHeadline: "Trust the Vibe, not the Logic.",
+      subHeadline: "AI gives perfect answers. Here is a place to get lost in unanswerable questions together.",
+      ctaButton: "Connect Raw Voice",
+      latestStories: "Latest Stories",
+      postedOn: "Posted on",
     },
     ja: {
-      heroTitle: "「これ、AIでよくない？」という絶望。",
-      leadText: "構造的必然として人間が淘汰される時代。私たちが最後に残せる価値とは何か？ あえて「不便なアプリ」を作った理由。",
-      ctaButton: "Co-Vibeを始める / 接続",
-      moreStories: "他の記事を読む",
-      manifesto: manifestoContent.ja
+      mainHeadline: "「正しさ」よりも、「揺らぎ」を。",
+      subHeadline: "AIは完璧な答えをくれる。ここは、答えのない問いに共に迷うための場所。",
+      ctaButton: "生の声を繋ぐ",
+      latestStories: "最新の記事",
+      postedOn: "投稿日",
     },
-    es: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.es},
-    fr: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.fr},
-    pt: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.pt},
-    ko: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.ko},
-    de: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.de},
+     es: {
+      mainHeadline: "Confía en la Vibra, no en la Lógica.",
+      subHeadline: "La IA da respuestas perfectas. Este es un lugar para perderse juntos en preguntas sin respuesta.",
+      ctaButton: "Conectar Voz Cruda",
+      latestStories: "Últimas Historias",
+      postedOn: "Publicado el",
+    },
+    fr: {
+      mainHeadline: "Faites confiance à l'Ambiance, pas à la Logique.",
+      subHeadline: "L'IA donne des réponses parfaites. Voici un endroit pour se perdre ensemble dans des questions sans réponse.",
+      ctaButton: "Connecter la Voix Brute",
+      latestStories: "Dernières Histoires",
+      postedOn: "Publié le",
+    },
+    pt: {
+      mainHeadline: "Confie na Vibração, não na Lógica.",
+      subHeadline: "A IA dá respostas perfeitas. Aqui é um lugar para se perder em perguntas sem resposta juntos.",
+      ctaButton: "Conectar Voz Crua",
+      latestStories: "Últimas Histórias",
+      postedOn: "Publicado em",
+    },
+    ko: {
+      mainHeadline: "논리보다, 분위기를 믿으세요.",
+      subHeadline: "AI는 완벽한 답을 제공합니다. 여기는 답 없는 질문에 함께 빠져들기 위한 장소입니다.",
+      ctaButton: "날것의 목소리 연결",
+      latestStories: "최신 기사",
+      postedOn: "게시일",
+    },
+    de: {
+        mainHeadline: "Vertraue dem Vibe, nicht der Logik.",
+        subHeadline: "KI gibt perfekte Antworten. Hier ist ein Ort, um sich gemeinsam in unbeantwortbaren Fragen zu verlieren.",
+        ctaButton: "Rohe Stimme verbinden",
+        latestStories: "Neueste Geschichten",
+        postedOn: "Veröffentlicht am",
+    }
   };
 
-  const { heroTitle, leadText, ctaButton, moreStories, manifesto } = content[language];
+  const pageContent = content[language];
+  const posts = mockPosts;
 
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-3xl mx-auto">
-        {/* Hero Section */}
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-foreground">
-            {heroTitle}
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            {leadText}
-          </p>
-        </header>
-
-        {/* CTA Button (optional, can be placed here) */}
-        <div className="flex justify-center mb-16">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            {ctaButton}
-          </Button>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative flex flex-col items-center justify-center h-[50vh] min-h-[400px] md:h-screen md:min-h-[600px] bg-deep-black text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+           <OrganicWave />
         </div>
-
-        {/* Main Content (The Manifesto) */}
-        <article>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : manifesto ? (
-             <div
-              className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6"
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold max-w-4xl">
+             {language === 'en' ? (
+              <>Trust the <span className="text-primary italic">Vibe</span>, not the Logic.</>
+            ) : (
+              pageContent.mainHeadline
+            )}
+          </h1>
+          <p className="mt-6 text-base md:text-xl text-gray-400 max-w-2xl">
+            {pageContent.subHeadline}
+          </p>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-10"
+          >
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6 rounded-full transition-all duration-300"
             >
-                <h2>{manifesto.title}</h2>
-                <p>{manifesto.content}</p>
-            </div>
-          ) : (
-            <p>Manifesto could not be loaded.</p>
-          )}
-        </article>
-        
-        {/* Footer / More Stories */}
-        <footer className="mt-20 text-center">
-            <Link href={`/${language}`} className="text-primary hover:underline text-lg">
-                {moreStories} &rarr;
-            </Link>
-        </footer>
-      </div>
+              {pageContent.ctaButton}
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Article List Section */}
+      <section className="flex-grow bg-white dark:bg-gray-900 py-16 sm:py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground dark:text-white">{pageContent.latestStories}</h2>
+          <div className="space-y-12">
+            {posts.map((post) => (
+              <Link href={`/${language}/${post.slug}`} key={post.slug} className="group block">
+                <Card className="w-full transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 overflow-hidden border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+                  <div className="md:flex">
+                     <div className="md:w-2/5 xl:w-1/3">
+                        {post.image && (
+                          <div className="relative w-full h-48 md:h-full aspect-video md:aspect-auto overflow-hidden">
+                            <Image
+                              src={post.image}
+                              alt={post.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="md:w-3/5 xl:w-2/3 flex flex-col p-6 lg:p-8">
+                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.title}</h3>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
+                        </p>
+                      </div>
+                   </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
