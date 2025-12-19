@@ -5,6 +5,7 @@ import type { LanguageCode } from '@/lib/languages';
 
 interface LanguageContextType {
   language: LanguageCode;
+  setLanguage: (language: LanguageCode) => void;
   toggleLanguage: () => void;
 }
 
@@ -18,7 +19,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

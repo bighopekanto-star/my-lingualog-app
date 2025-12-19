@@ -1,4 +1,4 @@
-export type LanguageCode = 'en' | 'ja';
+export type LanguageCode = 'en' | 'ja' | 'es' | 'fr' | 'pt' | 'ko' | 'de';
 
 export type Language = {
   code: LanguageCode;
@@ -13,6 +13,7 @@ export const allLanguages: Language[] = [
   { code: 'fr', name: 'French' },
   { code: 'pt', name: 'Portuguese' },
   { code: 'ko', name: 'Korean' },
+  { code: 'de', name: 'German' },
 ];
 
 export const getLanguageInfo = (code: string): Language | undefined => {

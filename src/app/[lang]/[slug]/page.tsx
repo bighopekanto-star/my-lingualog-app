@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { allLanguages, getLanguageInfo } from '@/lib/languages';
+import { getLanguageInfo } from '@/lib/languages';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import {
@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { getPostData, getPostSlugs } from '@/lib/posts';
 import { format } from 'date-fns';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -18,13 +17,19 @@ type Props = {
   params: { lang: string, slug: string }
 }
 
-export async function generateStaticParams() {
-  const slugs = getPostSlugs();
-  const params = allLanguages.flatMap(lang => 
-    slugs.map(slug => ({ lang: lang.code, slug }))
-  );
-  return params;
+// This page will now show placeholder content.
+// In the future, it will fetch posts from Firestore.
+const getPostData = async (lang: string, slug: string) => {
+    return {
+        slug: slug,
+        title: `Blog post ${slug}`,
+        date: '2025-12-08',
+        image: `/images/${slug}-thumbnail.png`,
+        description: `Description for ${slug}`,
+        content: `Content for ${slug} in ${lang}`,
+    }
 }
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostData(params.lang, params.slug);
@@ -98,8 +103,9 @@ export default async function PostPage({ params }: { params: { lang: string, slu
           <CardContent>
              <div
               className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+             >
+                 <p>{post.content}</p>
+             </div>
           </CardContent>
         </Card>
       </div>

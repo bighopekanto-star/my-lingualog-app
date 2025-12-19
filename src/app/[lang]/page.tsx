@@ -8,17 +8,18 @@ import {
   CardDescription
 } from '@/components/ui/card';
 import { getLanguageInfo, allLanguages } from '@/lib/languages';
-import { getAllPosts } from '@/lib/posts';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-export async function generateStaticParams() {
-  return allLanguages.map((lang) => ({
-    lang: lang.code,
-  }));
-}
-
+// This page will now show placeholder content.
+// In the future, it will fetch posts from Firestore.
+const mockPosts = [
+    { slug: 'vol1', title: 'Blog Post 1', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
+    { slug: 'vol2', title: 'Blog Post 2', date: '2025-12-09', image: '/images/vol2-thumbnail.png' },
+    { slug: 'vol3', title: 'Blog Post 3', date: '2025-12-10', image: '/images/vol3-thumbnail.png' },
+    { slug: 'vol4', title: 'Blog Post 4', date: '2025-12-18', image: '/images/vol4-thumbnail.png' },
+]
 
 export default function LanguageHomePage({ params }: { params: { lang: string } }) {
   const lang = getLanguageInfo(params.lang);
@@ -27,7 +28,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
     notFound();
   }
 
-  const posts = getAllPosts(lang.code);
+  const posts = mockPosts;
   
   const content = {
     en: {
@@ -40,6 +41,31 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
       description: "開発日誌を含む、すべての記事一覧です。",
       postedOn: "投稿日",
     },
+    es: {
+      title: "Todas las historias",
+      description: "Una colección de todos los artículos y registros de desarrollo.",
+      postedOn: "Publicado el",
+    },
+    fr: {
+      title: "Toutes les histoires",
+      description: "Une collection de tous les articles et journaux de développement.",
+      postedOn: "Publié le",
+    },
+    pt: {
+      title: "Todas as histórias",
+      description: "Uma coleção de todos os artigos e registos de desenvolvimento.",
+      postedOn: "Publicado em",
+    },
+    ko: {
+      title: "모든 이야기",
+      description: "모든 기사와 개발 로그 모음입니다.",
+      postedOn: "게시일",
+    },
+    de: {
+        title: "Alle Geschichten",
+        description: "Eine Sammlung aller Artikel und Entwicklungsprotokolle.",
+        postedOn: "Veröffentlicht am",
+    }
   };
   
   const pageContent = content[params.lang as keyof typeof content] || content.en;

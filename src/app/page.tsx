@@ -2,44 +2,30 @@
 
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
-import type { Post } from '@/lib/posts';
 import { useLanguage } from '@/context/language-context';
 import Link from 'next/link';
-import { getManifestoPost } from './actions';
 
-const MANIFESTO_SLUG = 'vol1';
+// This is now a placeholder. In the future, this will be fetched from Firestore.
+const manifestoContent = {
+    en: {
+        title: "If the 'language barrier' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity",
+        content: `Well, hello. It's nice to meet you. This is actually the very first post on this blog...`
+    },
+    ja: {
+        title: "「言葉の壁」が消えたら、僕らは幸せになれるのか？ーシンギュラリティと戦うド素人の開発記",
+        content: `どうも。はじめまして。 これ、実は記念すべきブログの初回なんですが...`
+    },
+    // Add other languages here
+    es: { title: "", content: "" },
+    fr: { title: "", content: "" },
+    pt: { title: "", content: "" },
+    ko: { title: "", content: "" },
+    de: { title: "", content: "" },
+}
 
 export default function Home() {
   const { language } = useLanguage();
-  const [manifesto, setManifesto] = useState<Post | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchManifesto() {
-      setIsLoading(true);
-      try {
-        const postData = await getManifestoPost(language, MANIFESTO_SLUG);
-        if (postData) {
-          setManifesto({
-            slug: postData.slug,
-            title: postData.title,
-            description: postData.description,
-            date: postData.date,
-            image: postData.image,
-            content: postData.content,
-          });
-        } else {
-          setManifesto(null);
-        }
-      } catch (error) {
-        console.error('Failed to fetch manifesto:', error);
-        setManifesto(null);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchManifesto();
-  }, [language]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const content = {
     en: {
@@ -47,16 +33,23 @@ export default function Home() {
       leadText: "In an age of structural necessity, humans are becoming the bottleneck. What value remains for us? This is why I built an intentionally inconvenient app.",
       ctaButton: "Enter Co-Vibe / Connect",
       moreStories: "More Stories",
+      manifesto: manifestoContent.en
     },
     ja: {
       heroTitle: "「これ、AIでよくない？」という絶望。",
       leadText: "構造的必然として人間が淘汰される時代。私たちが最後に残せる価値とは何か？ あえて「不便なアプリ」を作った理由。",
       ctaButton: "Co-Vibeを始める / 接続",
       moreStories: "他の記事を読む",
+      manifesto: manifestoContent.ja
     },
+    es: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.es},
+    fr: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.fr},
+    pt: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.pt},
+    ko: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.ko},
+    de: { heroTitle: "", leadText: "", ctaButton: "", moreStories: "", manifesto: manifestoContent.de},
   };
 
-  const { heroTitle, leadText, ctaButton, moreStories } = content[language];
+  const { heroTitle, leadText, ctaButton, moreStories, manifesto } = content[language];
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -83,10 +76,12 @@ export default function Home() {
           {isLoading ? (
             <p>Loading...</p>
           ) : manifesto ? (
-            <div
+             <div
               className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6"
-              dangerouslySetInnerHTML={{ __html: manifesto.content }}
-            />
+            >
+                <h2>{manifesto.title}</h2>
+                <p>{manifesto.content}</p>
+            </div>
           ) : (
             <p>Manifesto could not be loaded.</p>
           )}
