@@ -11,13 +11,19 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 import { OrganicWave } from '@/components/layout/organic-wave';
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
+import { getAllPosts, type Post } from '@/lib/posts';
 
-const mockPosts = [
-    { slug: 'vol1', title: 'If the \'language barrier\' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
-    { slug: 'vol2', title: 'The day I wasted 3 hours on a copy-paste error and even my plea to AI was rejected by AI. [Dev Log Vol.2]', date: '2025-12-09', image: '/images/vol2-thumbnail.png' },
-    { slug: 'vol3', title: 'When a student asked, \'Won\'t life be boring if AI becomes widespread?\', I thought the time spent agonizing over it might become a \'luxury\'.', date: '2025-12-10', image: '/images/vol3-thumbnail.png' },
-    { slug: 'vol4', title: 'Antigravity Because the Name is Cool. Doppelgänger Solution and 10% Futile Effort. [Dev Log vol.4]', date: '2025-12-18', image: '/images/vol4-thumbnail.png' },
-];
+// This component now fetches posts on the client side for simplicity
+// and to avoid issues with 'fs' module on the browser.
+// A more optimized approach would use server-side fetching with an API route or getStaticProps.
+function AllPosts() {
+    // This is not ideal for performance, but it's a temporary workaround.
+    // In a real app, this data should be fetched from a server/API.
+    const posts: Post[] = useMemo(() => getAllPosts(), []);
+    return posts;
+}
+
 
 export default function Home() {
   const { language } = useLanguage();
@@ -75,7 +81,7 @@ export default function Home() {
   };
 
   const pageContent = content[language];
-  const posts = mockPosts;
+  const posts = AllPosts();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -125,7 +131,7 @@ export default function Home() {
                           <div className="relative w-full aspect-[1.91/1] overflow-hidden">
                             <Image
                               src={post.image}
-                              alt={post.title}
+                              alt={post.content[language]?.title || post.content['en'].title}
                               fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
@@ -133,7 +139,7 @@ export default function Home() {
                         )}
                       </div>
                       <div className="md:w-3/5 xl:w-2/3 flex flex-col justify-center p-6 lg:p-8">
-                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.title}</h3>
+                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[language]?.title || post.content['en'].title}</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                           {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
                         </p>

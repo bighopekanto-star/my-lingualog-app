@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getLanguageInfo } from '@/lib/languages';
+import { getLanguageInfo, allLanguages, LanguageCode } from '@/lib/languages';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import {
@@ -12,49 +12,50 @@ import {
 import { format } from 'date-fns';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { getPostBySlug, getAllPosts } from '@/lib/posts';
+import { marked } from 'marked';
 
 type Props = {
   params: { lang: string, slug: string }
 }
 
-// This page will now show placeholder content.
-// In the future, it will fetch posts from Firestore.
-const getPostData = async (lang: string, slug: string) => {
-    return {
-        slug: slug,
-        title: `Blog post ${slug}`,
-        date: '2025-12-08',
-        image: `/images/${slug}-thumbnail.png`,
-        description: `Description for ${slug}`,
-        content: `Content for ${slug} in ${lang}`,
-    }
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  const params = posts.flatMap(post => 
+    allLanguages.map(lang => ({
+      lang: lang.code,
+      slug: post.slug,
+    }))
+  );
+  return params;
 }
 
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostData(params.lang, params.slug);
-  const lang = getLanguageInfo(params.lang);
+  const post = getPostBySlug(params.slug);
+  const lang = getLanguageInfo(params.lang) as { code: LanguageCode; name: string; };
 
   if (!post || !lang) {
     return {
       title: 'Post Not Found'
     }
   }
+
+  const postContent = post.content[lang.code] || post.content.en;
   
   const imageUrl = post.image.startsWith('http') ? post.image : `${process.env.VERCEL_URL ? 'https' : 'http'}://${process.env.VERCEL_URL || 'localhost:3000'}${post.image}`;
 
   return {
-    title: `${post.title} - Co-Vibe`,
-    description: post.description,
+    title: `${postContent.title} - Co-Vibe`,
+    description: postContent.description,
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title: postContent.title,
+      description: postContent.description,
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: postContent.title,
         },
       ],
     },
@@ -62,19 +63,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 
-export default async function PostPage({ params }: { params: { lang: string, slug: string } }) {
-  const lang = getLanguageInfo(params.lang);
-  const post = await getPostData(params.lang, params.slug);
+export default async function PostPage({ params }: { params: { lang: LanguageCode, slug: string } }) {
+  const langInfo = getLanguageInfo(params.lang);
+  const post = getPostBySlug(params.slug);
 
-  if (!lang || !post) {
+  if (!langInfo || !post) {
     notFound();
   }
+
+  const postContent = post.content[params.lang] || post.content.en;
+  const parsedContent = await marked(postContent.body);
+
 
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="max-w-3xl mx-auto">
         <Button variant="ghost" asChild className="mb-8">
-          <Link href={`/${lang.code}`}>
+          <Link href={`/${params.lang}`}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to All Stories
           </Link>
@@ -84,7 +89,7 @@ export default async function PostPage({ params }: { params: { lang: string, slu
              <div className="relative w-full aspect-video">
                 <Image
                     src={post.image}
-                    alt={post.title}
+                    alt={postContent.title}
                     width={1200}
                     height={630}
                     className="object-cover w-full"
@@ -94,7 +99,7 @@ export default async function PostPage({ params }: { params: { lang: string, slu
           )}
           <CardHeader>
             <CardTitle className="text-3xl md:text-4xl font-headline text-foreground">
-              {post.title}
+              {postContent.title}
             </CardTitle>
             <p className="text-sm text-muted-foreground pt-2">
               Posted on {format(new Date(post.date), 'MMMM d, yyyy')}
@@ -103,9 +108,8 @@ export default async function PostPage({ params }: { params: { lang: string, slu
           <CardContent>
              <div
               className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6"
-             >
-                 <p>{post.content}</p>
-             </div>
+              dangerouslySetInnerHTML={{ __html: parsedContent }}
+             />
           </CardContent>
         </Card>
       </div>
