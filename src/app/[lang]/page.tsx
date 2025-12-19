@@ -12,10 +12,10 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/language-context';
 
 const mockPosts = [
-    { slug: 'vol1', title: 'Blog Post 1', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
-    { slug: 'vol2', title: 'Blog Post 2', date: '2025-12-09', image: '/images/vol2-thumbnail.png' },
-    { slug: 'vol3', title: 'Blog Post 3', date: '2025-12-10', image: '/images/vol3-thumbnail.png' },
-    { slug: 'vol4', title: 'Blog Post 4', date: '2025-12-18', image: '/images/vol4-thumbnail.png' },
+    { slug: 'vol1', title: 'If the \'language barrier\' disappeared, would we be happy? - A development story of a complete amateur fighting the singularity', date: '2025-12-08', image: '/images/vol1-thumbnail.png' },
+    { slug: 'vol2', title: 'The day I wasted 3 hours on a copy-paste error and even my plea to AI was rejected by AI. [Dev Log Vol.2]', date: '2025-12-09', image: '/images/vol2-thumbnail.png' },
+    { slug: 'vol3', title: 'When a student asked, \'Won\'t life be boring if AI becomes widespread?\', I thought the time spent agonizing over it might become a \'luxury\'.', date: '2025-12-10', image: '/images/vol3-thumbnail.png' },
+    { slug: 'vol4', title: 'Antigravity Because the Name is Cool. Doppelgänger Solution and 10% Futile Effort. [Dev Log vol.4]', date: '2025-12-18', image: '/images/vol4-thumbnail.png' },
 ]
 
 export default function LanguageHomePage({ params }: { params: { lang: string } }) {
@@ -88,7 +88,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
                   <div className="md:flex">
                      <div className="md:w-2/5 xl:w-1/3">
                         {post.image && (
-                          <div className="relative w-full h-48 md:h-full aspect-video md:aspect-auto overflow-hidden">
+                          <div className="relative w-full aspect-[1.91/1] overflow-hidden">
                             <Image
                               src={post.image}
                               alt={post.title}
@@ -98,7 +98,7 @@ export default function LanguageHomePage({ params }: { params: { lang: string } 
                           </div>
                         )}
                       </div>
-                      <div className="md:w-3/5 xl:w-2/3 flex flex-col p-6 lg:p-8">
+                      <div className="md:w-3/5 xl:w-2/3 flex flex-col justify-center p-6 lg:p-8">
                         <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.title}</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                           {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
