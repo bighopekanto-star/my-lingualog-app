@@ -33,7 +33,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
-  const lang = getLanguageInfo(params.lang) as { code: LanguageCode; name: string; };
+  const lang = getLanguageInfo(params.lang as LanguageCode);
 
   if (!post || !lang) {
     return {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const postContent = post.content[lang.code as LanguageCode] || post.content.en;
+  const postContent = post.content[lang.code] || post.content.en;
   
   const imageUrl = post.image.startsWith('http') ? post.image : `https://${process.env.VERCEL_URL || 'localhost:9002'}${post.image}`;
 

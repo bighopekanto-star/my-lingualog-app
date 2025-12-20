@@ -25,8 +25,13 @@ function getPostSlugs() {
     const fileNames = fs.readdirSync(enDirectory);
     return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
   } catch (error) {
-    console.error("Could not read 'en' posts directory:", error);
-    return [];
+    // In a production build, this directory must exist.
+    // In local dev, it might not, so we return empty to avoid crashes.
+    if (process.env.NODE_ENV === 'development') {
+        console.error("Could not read 'en' posts directory (this may be normal in dev):", error);
+        return [];
+    }
+    throw error;
   }
 }
 
@@ -55,12 +60,9 @@ export function getPostBySlug(slug: string): Post | null {
           body: content,
         };
       } catch (e) {
-        // Fallback for parsing error
-        postData.content[lang.code] = {
-          title: `(Error parsing ${lang.name})`,
-          description: '',
-          body: ''
-        };
+        // In a production build, we want to fail loudly if a post is malformed.
+        console.error(`Error parsing ${fullPath}:`, e);
+        throw new Error(`Failed to parse markdown file: ${fullPath}`);
       }
     }
   }
@@ -69,16 +71,16 @@ export function getPostBySlug(slug: string): Post | null {
     return null;
   }
   
-  // Ensure all language contents are filled, at least with fallbacks.
+  // To ensure consistency, we can fill missing languages with English content as a fallback.
+  const englishContent = postData.content.en;
+  if (!englishContent) {
+      // If even English is missing, the post is invalid.
+      return null;
+  }
+
   for (const lang of allLanguages) {
     if (!postData.content[lang.code]) {
-      // If a language file doesn't exist, we provide a default placeholder.
-      // The English content will be used as a primary fallback later in the components.
-      postData.content[lang.code] = {
-          title: `(No translation for ${lang.name})`,
-          description: '',
-          body: ''
-      };
+      postData.content[lang.code] = englishContent;
     }
   }
 
