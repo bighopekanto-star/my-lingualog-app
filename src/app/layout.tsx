@@ -4,8 +4,6 @@ import Header from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { LanguageProvider } from '@/context/language-context';
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: 'Co-Vibe',
@@ -30,8 +28,6 @@ export default function RootLayout({
           <main>{children}</main>
           <Toaster />
         </LanguageProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
