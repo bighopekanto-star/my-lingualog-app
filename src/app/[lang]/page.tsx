@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
 import { getLanguageInfo } from '@/lib/languages';
-import { getAllPosts, type Post } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 import ClientLangHomePage from './client-lang-home-page';
+import { use } from 'react';
 
-export default async function LanguageHomePage({ params }: { params: { lang: string } }) {
-  const langInfo = getLanguageInfo(params.lang);
+export default function LanguageHomePage({ params }: { params: { lang: string } }) {
+  const safeParams = use(params);
+  const langInfo = getLanguageInfo(safeParams.lang);
 
   if (!langInfo) {
     notFound();
@@ -12,5 +14,5 @@ export default async function LanguageHomePage({ params }: { params: { lang: str
 
   const posts = getAllPosts();
 
-  return <ClientLangHomePage posts={posts} lang={params.lang} />;
+  return <ClientLangHomePage posts={posts} lang={safeParams.lang} />;
 }

@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { translateFlow } from '../ai/translate';
-import { languages } from '../lib/languages';
+import { allLanguages } from '../lib/languages';
 import fs from 'fs';
 import path from 'path';
 import { run } from 'genkit';
@@ -22,7 +22,7 @@ async function main() {
 
   const sourceContent = fs.readFileSync(sourceFilePath, 'utf-8');
   const sourceLangCode = path.basename(path.dirname(sourceFilePath));
-  const sourceLang = languages.find(l => l.code === sourceLangCode);
+  const sourceLang = allLanguages.find(l => l.code === sourceLangCode);
   const slug = path.basename(sourceFilePath, '.md');
 
   if (!sourceLang) {
@@ -33,7 +33,7 @@ async function main() {
   
   const postsDir = path.join(process.cwd(), 'src', 'posts');
 
-  const targetLanguages = languages.filter(lang => lang.code !== sourceLang.code);
+  const targetLanguages = allLanguages.filter(lang => lang.code !== sourceLang.code);
 
   for (const targetLang of targetLanguages) {
     console.log(`  -> Translating to ${targetLang.name} (${targetLang.code})`);
