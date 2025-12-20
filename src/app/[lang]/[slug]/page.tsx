@@ -42,10 +42,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const postContent = post.content[lang.code] || post.content.en;
   
-  const imageUrl = post.image.startsWith('http') ? post.image : `${process.env.VERCEL_URL ? 'https' : 'http'}://${process.env.VERCEL_URL || 'localhost:3000'}${post.image}`;
+  const imageUrl = post.image.startsWith('http') ? post.image : `https://${process.env.VERCEL_URL || 'localhost:9002'}${post.image}`;
 
   return {
-    title: `${postContent.title} - Co-Vibe`,
+    title: `${postContent.title} - LinguaLog`,
     description: postContent.description,
     openGraph: {
       title: postContent.title,
@@ -86,13 +86,12 @@ export default async function PostPage({ params }: { params: { lang: LanguageCod
         </Button>
         <Card className="overflow-hidden">
           {post.image && (
-             <div className="relative w-full aspect-video">
+             <div className="relative w-full aspect-[1.91/1]">
                 <Image
                     src={post.image}
                     alt={postContent.title}
-                    width={1200}
-                    height={630}
-                    className="object-cover w-full"
+                    fill
+                    className="object-cover"
                     priority
                 />
             </div>
