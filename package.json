@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "translate": "node -r dotenv/config -r tsconfig-paths/register -r tsx/esm src/scripts/translate.ts"
+    "translate": "node -r dotenv/config -r tsx/esm src/scripts/translate.ts"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
