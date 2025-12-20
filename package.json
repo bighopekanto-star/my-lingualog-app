@@ -51,11 +51,11 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.475.0",
     "marked": "^13.0.2",
-    "next": "^14.2.0",
+    "next": "14.2.5",
     "patch-package": "^8.0.0",
-    "react": "^18.3.1",
+    "react": "18.3.1",
     "react-day-picker": "^9.11.3",
-    "react-dom": "^18.3.1",
+    "react-dom": "18.3.1",
     "react-hook-form": "^7.54.2",
     "recharts": "^2.15.1",
     "tailwind-merge": "^3.0.1",
@@ -67,7 +67,8 @@
     "@tailwindcss/typography": "^0.5.14",
     "@types/marked": "^6.0.0",
     "@types/node": "^20",
-    "@types/react": "^18.0.0",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "genkit-cli": "^1.20.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
@@ -75,6 +76,6 @@
   },
   "overrides": {
     "node-fetch": "^2.6.7",
-    "@types/react": "^18.0.0"
+    "@types/react": "18.3.3"
   }
 }
