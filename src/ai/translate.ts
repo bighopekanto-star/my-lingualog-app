@@ -33,7 +33,7 @@ export const translateFlow = ai.defineFlow(
 
     const llmResponse = await ai.generate({
       prompt: prompt,
-      model: 'googleai/gemini-2.5-pro',
+      model: 'googleai/gemini-2.5-flash',
     });
 
     const translatedText = llmResponse.text;
