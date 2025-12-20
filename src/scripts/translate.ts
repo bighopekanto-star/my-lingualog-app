@@ -3,7 +3,7 @@ import { translateFlow } from '../ai/translate';
 import { allLanguages } from '../lib/languages';
 import fs from 'fs';
 import path from 'path';
-import { run } from 'genkit';
+import { run } from 'genkit/flow';
 
 async function main() {
   const args = process.argv.slice(2);
