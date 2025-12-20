@@ -2,6 +2,7 @@
 title: ""Isso não poderia ser feito por IA?" O desespero. O valor que nós, estruturalmente fadados à obsolescência, podemos finalmente preservar."
 date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
+description: "Um desenvolvedor reflete sobre a 'inevitabilidade estrutural' da IA e busca o valor remanescente da humanidade em um mundo que prioriza a eficiência."
 ---
 O desespero de "Isso não precisaria de mim?"
 A ideia para o desenvolvimento deste aplicativo surgiu de uma percepção momentânea que tive um dia, enquanto trabalhava como tutor em uma escola preparatória.

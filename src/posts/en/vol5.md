@@ -2,6 +2,7 @@
 title: "「Isn't AI good enough for this?」 The Despair. The Lasting Value of Humans, Who Are Structurally Destined for Elimination."
 date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
+description: "A developer reflects on the 'structural inevitability' of AI and searches for humanity's remaining value in a world that prioritizes efficiency."
 ---
 The Despair of "Isn't This Better Off Without Me?"
 The development philosophy behind this app was sparked by a sudden realization one day while I was working part-time at a cram school.
@@ -62,4 +63,3 @@ Someone out there is surely waiting for your imperfect, and precisely because of
 #Intercultural
 #Ikigai
 #Singularity
----

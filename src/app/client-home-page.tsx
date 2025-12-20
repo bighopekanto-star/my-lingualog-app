@@ -115,7 +115,7 @@ export default function ClientHomePage({ posts }: { posts: Post[] }) {
                   <div className="md:flex">
                      <div className="md:w-2/5 xl:w-1/3">
                         {post.image && (
-                          <div className="relative w-full aspect-[1.91/1] overflow-hidden">
+                          <div className="relative w-full aspect-video overflow-hidden">
                             <Image
                               src={post.image}
                               alt={post.content[language as keyof typeof post.content]?.title || post.content['en'].title}

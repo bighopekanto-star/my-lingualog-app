@@ -2,6 +2,7 @@
 title: "« N'est-ce pas mieux avec l'IA ? » Ce désespoir. La valeur que nous, êtres humains inévitablement remplacés, pouvons laisser derrière nous."
 date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
+description: "Un développeur réfléchit à l'« inévitabilité structurelle » de l'IA et cherche la valeur restante de l'humanité dans un monde qui privilégie l'efficacité."
 ---
 Le désespoir de « N'est-ce pas mieux avec l'IA que moi ? »
 La philosophie de développement de cette application est née d'une prise de conscience soudaine, un jour, alors que je travaillais à temps partiel dans une école de soutien scolaire.
@@ -62,4 +63,3 @@ Quelqu'un attend sûrement vos mots imparfaits, et c'est précisément ce qui le
 #CultureÉtrangère
 #RaisonDeVivre
 #Singularité
----
