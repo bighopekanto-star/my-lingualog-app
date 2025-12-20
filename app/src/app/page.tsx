@@ -1,4 +1,3 @@
-
 import { getAllPosts } from '@/lib/posts';
 import ClientLangHomePage from './[lang]/client-lang-home-page';
 

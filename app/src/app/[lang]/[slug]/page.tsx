@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLanguageInfo, allLanguages, LanguageCode } from '@/lib/languages';
@@ -41,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const postContent = post.content[lang.code] || post.content.en;
+  const postContent = post.content[lang.code as LanguageCode] || post.content.en;
   
   const imageUrl = post.image.startsWith('http') ? post.image : `https://${process.env.VERCEL_URL || 'localhost:9002'}${post.image}`;
 
