@@ -1,0 +1,21 @@
+diff --git a/node_modules/@genkit-ai/ai/lib/model/middleware.js b/node_modules/@genkit-ai/ai/lib/model/middleware.js
+index 451b637f525c3453b53bb286663f91f32a76f62b..7926e2e2a0f8b17b2e1f46401f54460d603a1106 100644
+--- a/node_modules/@genkit-ai/ai/lib/model/middleware.js
++++ b/node_modules/@genkit-ai/ai/lib/model/middleware.js
+@@ -16,7 +16,6 @@
+  */
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.runInNewSpan = exports.modelAction = void 0;
+-const node_fetch_1 = require("node-fetch");
+ const index_1 = require("../telemetry/index");
+ /**
+  * Wraps a model action with telemetry instrumentation.
+@@ -35,7 +34,7 @@ function modelAction(model, request, fn) {
+             const media = part;
+             if (media.media && media.media.url.startsWith('http')) {
+                 count++;
+-                promises.push((0, node_fetch_1.fetch)(media.media.url).then(async (r) => {
++                promises.push(fetch(media.media.url).then(async (r) => {
+                     const blob = await r.blob();
+                     media.media.contentType = media.media.contentType || blob.type;
+                     media.media.url = `data:${media.media.contentType};base64,${Buffer.from(await blob.arrayBuffer()).toString('base64')}`;
