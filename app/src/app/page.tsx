@@ -1,7 +1,8 @@
-import { getAllPosts } from '@/lib/posts';
-import ClientHomePage from '@/app/client-home-page';
+// This component is now responsible for redirecting from the root to /en
+// It satisfies the Next.js build requirement for a root page.
+
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  const posts = getAllPosts();
-  return <ClientHomePage posts={posts} />;
+  redirect('/en');
 }
