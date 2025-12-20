@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const postContent = post.content[lang.code] || post.content.en;
   
-  const imageUrl = post.image.startsWith('http') ? post.image : `https://${process.env.VERCEL_URL || 'localhost:9002'}${post.image}`;
+  const imageUrl = post.image.startsWith('http') ? post.image : `https://lingualog-test-2025.web.app${post.image}`;
 
   return {
     title: `${postContent.title} - LinguaLog`,
@@ -77,7 +77,7 @@ export default async function PostPage({ params }: { params: { lang: LanguageCod
 
 
   return (
-    <div className="container mx-auto py-12 px-4 bg-background">
+    <div className="container mx-auto py-12 px-4">
       <div className="max-w-3xl mx-auto">
         <Button variant="ghost" asChild className="mb-8">
           <Link href={`/${params.lang}`}>

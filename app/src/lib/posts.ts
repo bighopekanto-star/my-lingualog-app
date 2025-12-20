@@ -25,11 +25,7 @@ function getPostSlugs() {
     const fileNames = fs.readdirSync(enDirectory);
     return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-        console.error("Could not read 'en' posts directory (this may be normal in dev):", error);
-        return [];
-    }
-    throw error;
+    return [];
   }
 }
 
@@ -59,10 +55,7 @@ export function getPostBySlug(slug: string): Post | null {
         };
       } catch (e) {
         console.error(`Error parsing ${fullPath}:`, e);
-        if (process.env.NODE_ENV === 'production') {
-            throw new Error(`Failed to parse markdown file: ${fullPath}`);
-        }
-        return null;
+        // In case of error, we still continue but the content will be missing
       }
     }
   }
@@ -71,12 +64,13 @@ export function getPostBySlug(slug: string): Post | null {
     return null;
   }
   
+  // Ensure English content exists as a fallback
   const englishContent = postData.content.en;
   if (!englishContent) {
-      // If even English is missing, the post is invalid, especially for metadata.
       return null;
   }
 
+  // Fill missing languages with English content
   for (const lang of allLanguages) {
     if (!postData.content[lang.code]) {
       postData.content[lang.code] = englishContent;
