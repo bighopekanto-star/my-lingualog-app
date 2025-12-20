@@ -1,6 +1,5 @@
-import 'dotenv/config';
-import { translateFlow } from '../ai/translate';
-import { allLanguages } from '../lib/languages';
+import { translateFlow } from '@/ai/translate';
+import { allLanguages } from '@/lib/languages';
 import fs from 'fs';
 import path from 'path';
 
