@@ -1,3 +1,4 @@
+
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -10,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "translate": "node -r dotenv/config -r tsx/esm src/scripts/translate.ts"
+    "translate": "echo \"Usage: curl -X POST http://localhost:9002/api/translate -H 'Content-Type: application/json' -d '{\\\"sourceFilePath\\\": \\\"src/posts/ja/your-file.md\\\"}'\""
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
@@ -69,7 +70,6 @@
     "genkit-cli": "^1.20.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.3"
   }
 }
