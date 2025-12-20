@@ -1,18 +1,15 @@
-'use client';
-
+import { notFound } from 'next/navigation';
+import { getLanguageInfo } from '@/lib/languages';
+import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
-import {
-  Card,
-  CardContent,
-} from '@/components/ui/card';
-import { LanguageCode } from '@/lib/languages';
+import { Card, CardContent } from '@/components/ui/card';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import type { Post } from '@/lib/posts';
 import React from 'react';
+import type { LanguageCode } from '@/lib/languages';
 
-export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lang: string }) {
-  const content = {
+const pageContentData = {
     en: {
       title: "All Stories",
       description: "A collection of all articles and development logs.",
@@ -48,10 +45,18 @@ export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lan
         description: "Eine Sammlung aller Artikel und Entwicklungsprotokolle.",
         postedOn: "Veröffentlicht am",
     }
-  };
-  
-  const pageContent = content[lang as keyof typeof content] || content.en;
-  const currentLang = lang as LanguageCode;
+};
+
+export default function LanguageHomePage({ params }: { params: { lang: string } }) {
+  const langInfo = getLanguageInfo(params.lang);
+
+  if (!langInfo) {
+    notFound();
+  }
+
+  const posts = getAllPosts();
+  const currentLang = params.lang as LanguageCode;
+  const pageContent = pageContentData[currentLang] || pageContentData.en;
 
   return (
     <div className="bg-white dark:bg-gray-900 py-16 sm:py-24">
@@ -67,7 +72,7 @@ export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lan
 
         <div className="space-y-12">
             {posts.map((post) => (
-              <Link href={`/${lang}/${post.slug}`} key={post.slug} className="group block">
+              <Link href={`/${currentLang}/${post.slug}`} key={post.slug} className="group block">
                 <Card className="w-full transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 overflow-hidden border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
                   <div className="md:flex">
                      <div className="md:w-2/5 xl:w-1/3">
