@@ -1,6 +1,6 @@
 ---
 title: "„Kann das nicht einfach eine KI machen?“ – Die Verzweiflung. Welchen Wert können wir, die als strukturell unvermeidlich ausgesondert werden, am Ende noch bewahren?"
-date: "2025-12-20"
+date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
 ---
 Die Verzweiflung: „Kann das nicht auch ohne mich?“

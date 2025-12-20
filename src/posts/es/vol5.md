@@ -1,6 +1,6 @@
 ---
 title: "La desesperación de '¿No sería mejor si esto lo hiciera una IA?'. El valor que nosotros, que seremos eliminados por una inevitabilidad estructural, podemos dejar al final."
-date: "2025-12-20"
+date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
 ---
 La desesperación de "¿No sería mejor si esto lo hiciera una IA en mi lugar?"

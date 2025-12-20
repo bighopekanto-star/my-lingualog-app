@@ -1,6 +1,6 @@
 ---
 title: "「Isn't AI good enough for this?」 The Despair. The Lasting Value of Humans, Who Are Structurally Destined for Elimination."
-date: "2025-12-20"
+date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
 ---
 The Despair of "Isn't This Better Off Without Me?"

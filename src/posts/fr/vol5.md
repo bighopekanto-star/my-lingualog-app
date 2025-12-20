@@ -1,6 +1,6 @@
 ---
 title: "« N'est-ce pas mieux avec l'IA ? » Ce désespoir. La valeur que nous, êtres humains inévitablement remplacés, pouvons laisser derrière nous."
-date: "2025-12-20"
+date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
 ---
 Le désespoir de « N'est-ce pas mieux avec l'IA que moi ? »

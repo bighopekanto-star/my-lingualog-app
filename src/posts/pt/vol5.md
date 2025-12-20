@@ -1,6 +1,6 @@
 ---
 title: ""Isso não poderia ser feito por IA?" O desespero. O valor que nós, estruturalmente fadados à obsolescência, podemos finalmente preservar."
-date: "2025-12-20"
+date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
 ---
 O desespero de "Isso não precisaria de mim?"
