@@ -68,7 +68,7 @@ export function getPostBySlug(slug: string): Post | null {
         };
       }
     } else {
-      console.log(`[DEBUG] Missing file for ${slug} in ${lang.code}`);
+      // console.log(`[DEBUG] Missing file for ${slug} in ${lang.code}`);
       // Fallback content if a language is missing
       postData.content[lang.code] = {
           title: `(No translation for ${lang.name})`,
@@ -88,7 +88,7 @@ export function getPostBySlug(slug: string): Post | null {
     return null;
   }
 
-  console.log(`[DEBUG] Successfully processed ${slug}.`);
+  // console.log(`[DEBUG] Successfully processed ${slug}.`);
   return postData as Post;
 }
 
