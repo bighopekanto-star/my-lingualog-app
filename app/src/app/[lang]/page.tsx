@@ -9,7 +9,6 @@ import {
   Card,
 } from '@/components/ui/card';
 
-// Moved from client component to here for Server Component rendering
 const pageContentMap = {
     en: {
       title: "All Stories",

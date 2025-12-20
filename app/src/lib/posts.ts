@@ -25,8 +25,6 @@ function getPostSlugs() {
     const fileNames = fs.readdirSync(enDirectory);
     return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
   } catch (error) {
-    // In a production build, this directory must exist.
-    // In local dev, it might not, so we return empty to avoid crashes.
     if (process.env.NODE_ENV === 'development') {
         console.error("Could not read 'en' posts directory (this may be normal in dev):", error);
         return [];
@@ -60,9 +58,11 @@ export function getPostBySlug(slug: string): Post | null {
           body: content,
         };
       } catch (e) {
-        // In a production build, we want to fail loudly if a post is malformed.
         console.error(`Error parsing ${fullPath}:`, e);
-        throw new Error(`Failed to parse markdown file: ${fullPath}`);
+        if (process.env.NODE_ENV === 'production') {
+            throw new Error(`Failed to parse markdown file: ${fullPath}`);
+        }
+        return null;
       }
     }
   }
@@ -71,10 +71,9 @@ export function getPostBySlug(slug: string): Post | null {
     return null;
   }
   
-  // To ensure consistency, we can fill missing languages with English content as a fallback.
   const englishContent = postData.content.en;
   if (!englishContent) {
-      // If even English is missing, the post is invalid.
+      // If even English is missing, the post is invalid, especially for metadata.
       return null;
   }
 
