@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "translate": "tsx src/scripts/translate.ts"
+    "translate": "tsx src/scripts/translate.ts",
+    "check-key": "node -e \"require('dotenv').config(); const key = process.env.GEMINI_API_KEY; if (!key) { console.error('❌ .envファイルにGEMINI_API_KEYが設定されていません。'); process.exit(1); } const command = `curl -s -H 'Content-Type: application/json' -d '{\\\"contents\\\":[{\\\"parts\\\":[{\\\"text\\\": \\\"test\\\"}]}]}' \\\"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${key}\\\"`; console.log('🔑 APIキーの有効性を確認しています...'); require('child_process').exec(command, (err, stdout) => { if (err) { console.error('コマンド実行エラー:', err); return; } try { const res = JSON.parse(stdout); if (res.error) { console.error('❌ APIキーが無効か、APIが有効になっていません。'); console.error('エラー詳細:', res.error.message); } else if (res.candidates) { console.log('✅ APIキーは有効です！'); } else { console.error('🤔 予期せぬ応答がありました:', stdout); } } catch (e) { console.error('応答の解析に失敗しました:', stdout); } });\""
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
