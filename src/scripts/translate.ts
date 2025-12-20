@@ -6,11 +6,11 @@ import dotenv from 'dotenv';
 // Resolve the .env file path from the project root and load it.
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-// Dynamically import modules using absolute paths resolved from the project root.
-const { translateFlow } = await import(path.join(process.cwd(), 'src/ai/translate.ts'));
-const { allLanguages } = await import(path.join(process.cwd(), 'src/lib/languages.ts'));
-
 async function main() {
+  // Dynamically import modules using absolute paths resolved from the project root.
+  const { translateFlow } = await import(path.join(process.cwd(), 'src/ai/translate.ts'));
+  const { allLanguages } = await import(path.join(process.cwd(), 'src/lib/languages.ts'));
+
   // process.argv will be: ['/path/to/node', '/path/to/tsx', 'src/scripts/translate.ts', 'src/posts/ja/vol5.md']
   // We need the argument after the script name.
   const sourceFilePath = process.argv[2];
