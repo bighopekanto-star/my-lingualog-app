@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "translate": "tsx --require dotenv/config src/scripts/translate.ts"
+    "translate": "tsx src/scripts/translate.ts"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
