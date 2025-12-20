@@ -20,7 +20,7 @@ const firebaseConfig = {
 let app: FirebaseApp;
 let analytics: Analytics | null = null;
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && firebaseConfig.projectId) {
     app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
     isSupported().then(supported => {
