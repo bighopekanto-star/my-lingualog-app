@@ -54,7 +54,6 @@ export function getPostBySlug(slug: string): Post | null {
           body: content,
         };
       } catch (e) {
-        console.error(`Error parsing ${fullPath}:`, e);
         // In case of error, we still continue but the content will be missing
       }
     }
