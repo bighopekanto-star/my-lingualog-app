@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import { getLanguageInfo } from '@/lib/languages';
 import { getAllPosts } from '@/lib/posts';

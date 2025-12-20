@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLanguageInfo, allLanguages, LanguageCode } from '@/lib/languages';
@@ -76,7 +77,7 @@ export default async function PostPage({ params }: { params: { lang: LanguageCod
 
 
   return (
-    <div className="container mx-auto py-12 px-4">
+    <div className="container mx-auto py-12 px-4 bg-background">
       <div className="max-w-3xl mx-auto">
         <Button variant="ghost" asChild className="mb-8">
           <Link href={`/${params.lang}`}>
@@ -86,7 +87,7 @@ export default async function PostPage({ params }: { params: { lang: LanguageCod
         </Button>
         <Card className="overflow-hidden">
           {post.image && (
-             <div className="relative w-full aspect-[1.91/1]">
+             <div className="relative w-full aspect-video">
                 <Image
                     src={post.image}
                     alt={postContent.title}
@@ -106,7 +107,7 @@ export default async function PostPage({ params }: { params: { lang: LanguageCod
           </CardHeader>
           <CardContent>
              <div
-              className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6"
+              className="prose dark:prose-invert max-w-none text-lg"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
              />
           </CardContent>

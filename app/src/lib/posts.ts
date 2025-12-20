@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -36,7 +37,6 @@ export function getPostBySlug(slug: string): Post | null {
   };
 
   let found = false;
-  let hasError = false;
 
   for (const lang of allLanguages) {
     const fullPath = path.join(postsDirectory, lang.code, `${slug}.md`);
@@ -55,29 +55,31 @@ export function getPostBySlug(slug: string): Post | null {
           body: content,
         };
       } catch (e) {
-        console.error(`Error parsing ${fullPath}:`, e);
-        hasError = true;
+        // Fallback for parsing error
         postData.content[lang.code] = {
           title: `(Error parsing ${lang.name})`,
           description: '',
           body: ''
         };
       }
-    } else {
+    }
+  }
+
+  if (!found) {
+    return null;
+  }
+  
+  // Ensure all language contents are filled, at least with fallbacks.
+  for (const lang of allLanguages) {
+    if (!postData.content[lang.code]) {
+      // If a language file doesn't exist, we provide a default placeholder.
+      // The English content will be used as a primary fallback later in the components.
       postData.content[lang.code] = {
           title: `(No translation for ${lang.name})`,
           description: '',
           body: ''
       };
     }
-  }
-
-  if (hasError) {
-    return null;
-  }
-
-  if (!found) {
-    return null;
   }
 
   return postData as Post;
@@ -87,10 +89,7 @@ export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
-    .filter((post): post is Post => {
-      const isPostValid = post !== null;
-      return isPostValid;
-    })
+    .filter((post): post is Post => post !== null)
     // Sort posts by date in descending order
     .sort((post1, post2) => (new Date(post1.date) > new Date(post2.date) ? -1 : 1));
   

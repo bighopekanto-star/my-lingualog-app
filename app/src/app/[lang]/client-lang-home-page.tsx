@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -54,10 +55,10 @@ export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lan
   const currentLang = lang as LanguageCode;
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-16 sm:py-24">
+    <div className="bg-background py-16 sm:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-foreground dark:text-white">
+          <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-foreground">
             {pageContent.title}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -68,11 +69,11 @@ export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lan
         <div className="space-y-12">
             {posts.map((post) => (
               <Link href={`/${lang}/${post.slug}`} key={post.slug} className="group block">
-                <Card className="w-full transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 overflow-hidden border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+                <Card className="w-full transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 overflow-hidden border-gray-200 dark:border-gray-800 bg-card">
                   <div className="md:flex">
                      <div className="md:w-2/5 xl:w-1/3">
                         {post.image && (
-                          <div className="relative w-full aspect-[1.91/1] overflow-hidden">
+                          <div className="relative w-full h-full min-h-[200px] md:min-h-0 aspect-video md:aspect-[1.91/1] overflow-hidden">
                             <Image
                               src={post.image}
                               alt={post.content[currentLang]?.title || post.content['en'].title}
@@ -83,10 +84,11 @@ export default function ClientLangHomePage({ posts, lang }: { posts: Post[], lan
                         )}
                       </div>
                       <div className="md:w-3/5 xl:w-2/3 flex flex-col justify-center p-6 lg:p-8">
-                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground dark:text-white">{post.content[currentLang]?.title || post.content['en'].title}</h3>
+                        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-foreground">{post.content[currentLang]?.title || post.content['en'].title}</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                           {pageContent.postedOn} {format(new Date(post.date), 'MMMM d, yyyy')}
                         </p>
+                        <p className="text-base text-muted-foreground line-clamp-2">{post.content[currentLang]?.description || post.content['en'].description}</p>
                       </div>
                    </div>
                 </Card>
