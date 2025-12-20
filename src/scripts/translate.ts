@@ -1,24 +1,24 @@
 
-import { NextResponse } from 'next/server';
-import { translateFlow } from '@/ai/translate';
-import { allLanguages } from '@/lib/languages';
+import { translateFlow } from '../ai/translate';
+import { allLanguages } from '../lib/languages';
 import fs from 'fs';
 import path from 'path';
 
-export async function POST(request: Request) {
+async function main() {
+  const sourceFilePath = process.argv[2];
+  if (!sourceFilePath) {
+    console.error('Error: Please provide the source file path as an argument.');
+    console.log('Usage: npm run translate -- <path/to/your/file.md>');
+    process.exit(1);
+  }
+
   try {
-    const body = await request.json();
-    const { sourceFilePath } = body;
-
-    if (!sourceFilePath) {
-      return NextResponse.json({ error: 'sourceFilePath is required' }, { status: 400 });
-    }
-
     const projectRoot = process.cwd();
     const absoluteSourcePath = path.join(projectRoot, sourceFilePath);
 
     if (!fs.existsSync(absoluteSourcePath)) {
-      return NextResponse.json({ error: `Source file not found: ${absoluteSourcePath}` }, { status: 404 });
+      console.error(`Error: Source file not found at ${absoluteSourcePath}`);
+      process.exit(1);
     }
 
     console.log(`Translating ${sourceFilePath}...`);
@@ -29,14 +29,13 @@ export async function POST(request: Request) {
     const slug = path.basename(absoluteSourcePath, '.md');
 
     if (!sourceLang) {
-      return NextResponse.json({ error: `Unknown source language code: ${sourceLangCode}` }, { status: 400 });
+      console.error(`Error: Unknown source language code: ${sourceLangCode}`);
+      process.exit(1);
     }
     
     const postsDir = path.join(projectRoot, 'src', 'posts');
     const targetLanguages = allLanguages.filter(lang => lang.code !== sourceLang.code);
     
-    const results: Record<string, string> = {};
-
     for (const targetLang of targetLanguages) {
       console.log(`  -> Translating to ${targetLang.name} (${targetLang.code})`);
       try {
@@ -53,24 +52,19 @@ export async function POST(request: Request) {
 
         const targetFilePath = path.join(targetDir, `${slug}.md`);
         fs.writeFileSync(targetFilePath, result.translatedContent);
-        const successMessage = `✓ Saved to ${targetFilePath}`;
-        console.log(`     ${successMessage}`);
-        results[targetLang.code] = successMessage;
+        console.log(`     ✓ Saved to ${targetFilePath}`);
 
       } catch (error: any) {
-        const errorMessage = `✗ Failed to translate to ${targetLang.name}: ${error.message}`;
-        console.error(`     ${errorMessage}`);
-        results[targetLang.code] = errorMessage;
+        console.error(`     ✗ Failed to translate to ${targetLang.name}:`, error);
       }
     }
 
-    return NextResponse.json({
-      message: 'Translation process completed.',
-      results,
-    });
+    console.log('\nTranslation process completed.');
 
   } catch (error: any) {
-    console.error('An unexpected error occurred in the translate API route:', error);
-    return NextResponse.json({ error: 'An unexpected error occurred', details: error.message }, { status: 500 });
+    console.error('An unexpected error occurred:', error);
+    process.exit(1);
   }
 }
+
+main();

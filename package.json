@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "translate": "echo \"Usage: curl -X POST http://localhost:9002/api/translate -H 'Content-Type: application/json' -d '{\\\"sourceFilePath\\\": \\\"src/posts/ja/your-file.md\\\"}'\""
+    "translate": "tsx --require dotenv/config src/scripts/translate.ts"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
@@ -71,5 +71,8 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3"
+  },
+  "overrides": {
+    "@types/react": "^18.0.0"
   }
 }
