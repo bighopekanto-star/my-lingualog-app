@@ -55,14 +55,14 @@ async function main() {
         console.log(`     ✓ Saved to ${targetFilePath}`);
 
       } catch (error: any) {
-        console.error(`     ✗ Failed to translate to ${targetLang.name}:`, error);
+        console.error(`     ✗ Failed to translate to ${targetLang.name}:`, error.message || error);
       }
     }
 
     console.log('\nTranslation process completed.');
 
   } catch (error: any) {
-    console.error('An unexpected error occurred:', error);
+    console.error('An unexpected error occurred:', error.message || error);
     process.exit(1);
   }
 }
