@@ -2,7 +2,7 @@
 title: "„Kann das nicht einfach eine KI machen?“ – Die Verzweiflung. Welchen Wert können wir, die als strukturell unvermeidlich ausgesondert werden, am Ende noch bewahren?"
 date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
-description: "Ein Entwickler reflektiert über die „strukturelle Notwendigkeit“ der KI und sucht nach dem verbleibenden Wert der Menschheit in einer Welt, in der Effizienz an erster Stelle steht."
+description: "Ein Entwickler reflektiert über die \"strukturelle Notwendigkeit\" der KI und sucht nach dem verbleibenden Wert der Menschheit in einer Welt, in der Effizienz an erster Stelle steht."
 ---
 Die Verzweiflung: „Kann das nicht auch ohne mich?“
 Die Entwicklungsidee für diese App entstand eines Tages aus einem plötzlichen Gedankenblitz, als ich in einer Nachhilfeschule jobbte.

@@ -2,7 +2,7 @@
 title: "La desesperación de '¿No sería mejor si esto lo hiciera una IA?'. El valor que nosotros, que seremos eliminados por una inevitabilidad estructural, podemos dejar al final."
 date: "2025-12-19"
 image: "/images/vol5-thumbnail.png"
-description: "Un desarrollador reflexiona sobre la 'inevitabilidad estructural' de la IA y busca el valor restante de la humanidad en un mundo que prioriza la eficiencia."
+description: "Un desarrollador reflexiona sobre la \"inevitabilidad estructural\" de la IA y busca el valor restante de la humanidad en un mundo que prioriza la eficiencia."
 ---
 La desesperación de "¿No sería mejor si esto lo hiciera una IA en mi lugar?"
 La filosofía de desarrollo de esta aplicación surgió de una súbita revelación un día mientras trabajaba a tiempo parcial en una academia.
