@@ -1,5 +1,5 @@
-import { translateFlow } from './src/ai/translate';
-import { allLanguages } from './src/lib/languages';
+import { translateFlow } from '../ai/translate';
+import { allLanguages } from '../lib/languages';
 import fs from 'fs';
 import path from 'path';
 
