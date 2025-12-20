@@ -3,7 +3,6 @@ import { translateFlow } from '../ai/translate';
 import { allLanguages } from '../lib/languages';
 import fs from 'fs';
 import path from 'path';
-import { run } from 'genkit';
 
 async function main() {
   const args = process.argv.slice(2);
@@ -39,7 +38,7 @@ async function main() {
     console.log(`  -> Translating to ${targetLang.name} (${targetLang.code})`);
     
     try {
-      const result = await run(translateFlow, {
+      const result = await translateFlow({
         content: sourceContent,
         sourceLang: sourceLang.name,
         targetLang: targetLang.name,
